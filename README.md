@@ -14,11 +14,19 @@ Mover a la carpeta donde se clonara el proyecto
 
 # Descargar node_modules
 
-npm i
+```bash
+    npm i
+```
 
 # Para modificar scss  
-npx gulp
+
+```bash
+    npx gulp
+```
 
 # Para modificar php
 
-php -S localhost:3000
+```bash
+    php -S localhost:3000
+```
+

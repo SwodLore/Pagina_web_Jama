@@ -1,0 +1,36 @@
+.header {
+    background-color: black;
+    box-sizing: border-box;
+    height: 120px;
+    color: white;
+}
+.logo img {
+    width: 150px;
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.nav-menu-list{
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    margin: 0 1rem;
+    gap: 1rem;
+}
+.header-menu-list {
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    margin: 0 1rem;
+    gap: 2rem;
+}
+
+.boton{ 
+    padding: 1.5rem;
+}
+
+.boton:hover{
+    background-color: #222;
+}

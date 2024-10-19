@@ -14,15 +14,16 @@
     <meta name="OG:title" content="Tienda Online de Zapatillas en Huancayo">
     <meta name="OG:description" content="Esta pagina web se trata de una tienda online de ventas de zapatillas en huancayo y poder enviar pedidos a otros lugares del peru.">
 
-    <link rel="icon" href="{{ asset('build/img/Jama-Icon.png') }}" type="image/png">
-    <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+    <link rel="icon" href="{{ asset('img/Jama-Icon.png') }}" type="image/png">
+    {{-- <link rel="stylesheet" href="{{ asset('build/css/app.css') }}"> --}}
+    @vite('resources/css/app.scss')
     <title>Jama Sports</title>
 </head>
 <body>
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <img src="{{ asset('build/img/Jama.png') }}" alt="Logo Jama Sports">
+                <img src="{{ asset('img/Jama.png') }}" alt="Logo Jama Sports">
             </div>
             <div class="search">
                 <input class="search-input" type="text" placeholder="Buscar">

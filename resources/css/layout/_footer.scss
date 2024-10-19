@@ -1,0 +1,35 @@
+footer {
+    background-color: black;
+    color: white;
+}
+
+.footer-title{
+    text-align: center;
+    font-size: 3.5rem;
+    margin: 0;
+}
+
+.footer-content{
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+}
+.footer-subtitle{
+    margin: 1rem;
+}
+.footer-info {
+    display: flex;
+    flex-direction: column;
+
+}
+.footer-info a {
+    padding: 1rem;
+}
+
+.footer-info a:hover {
+    background-color: #222;
+}
+.search-input {
+    width: 100%;
+    border-radius: 1rem;
+}

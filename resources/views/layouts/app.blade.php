@@ -62,6 +62,8 @@
                     <a href="#">+51 977 776 058</a>
                 </div>
                 
+            </div>
+            <div>
                 <h2 class="footer-subtitle">Siguenos en:</h2>
                 <div class="footer-info">
                     <a href="#">Facebook</a>

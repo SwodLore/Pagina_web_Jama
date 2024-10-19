@@ -1,12 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
+
 // ventanas
 Route::get('login',function(){
-    return view("Este es el login");
+    return "Este es el login";
 });
+
+Route::get('registro/{post}/{categoria?}',function($post , $categoria = null){
+    return "Este es el registro {$post} y {$categoria}";
+});
+
+
+
+
 

@@ -13,10 +13,14 @@ footer {
     display: flex;
     align-items: start;
     justify-content: space-evenly;
+    border-top: #888 solid 1px;
+    border-bottom: #888 solid 1px;
+    margin: 0 10rem;
 }
 .footer-subtitle{
     font-size: 2rem;
     margin: 1rem;
+    font-weight: bold;
 }
 .footer-info {
     display: flex;
@@ -25,12 +29,28 @@ footer {
 }
 .footer-info a {
     padding: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 .footer-info a:hover {
     background-color: #222;
 }
-.search-input {
-    width: 100%;
-    border-radius: 1rem;
+
+.footer-title-span{
+    color: red;
+    font-weight: bold;
+}
+.footer-icon{
+    margin: 0 0.5rem;
+    width: 2rem;
+}
+
+.footer-pay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    box-sizing: border-box;
+    margin: 0.5rem 1rem;
 }

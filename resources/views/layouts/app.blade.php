@@ -25,16 +25,19 @@
             <div class="logo">
                 <img src="{{ asset('img/Jama.png') }}" alt="Logo Jama Sports">
             </div>
-            <div class="search">
-                <input class="search-input" type="text" placeholder="Buscar">
+            <div class="header-search">
+                
+                    <input class="search-input" type="text" placeholder="Buscar">
+                    <img class="header-icon-search" src="{{ asset('img/lupa.svg') }}" alt="search Icon">
+                
             </div>
             <div class="header-nav">
                 <nav class="nav-menu">
                     <ul class="nav-menu-list">
-                        <li><a class="boton" href="#">Tiendas</a></li>
-                        <li><a class="boton" href="#">Mi cuenta</a></li>
-                        <li><a class="boton" href="#">Favorito</a></li>
-                        <li><a class="boton" href="#">Carrito</a></li>
+                        <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/tienda.svg') }}" alt="Tiendas Icon">Tiendas</a></li>
+                        <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/mi_cuenta.svg') }}" alt="Mi cuenta Icon">Mi cuenta</a></li>
+                        <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/favorito.svg') }}" alt="Favorito Icon"></a></li>
+                        <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/carrito.svg') }}" alt="Carrito Icon"></a></li>
                     </ul>
                 </nav>
             </div>
@@ -54,21 +57,23 @@
     @yield('content')
 
     <footer>
-        <h2 class="footer-title">Jama Sports</h2>
+        <h2 class="footer-title">Jama <span class="footer-title-span">Sports</span></h2>
         <div class="footer-content">
             <div>
                 <h2 class="footer-subtitle">Contacto:</h2>
                 <div class="footer-info">
-                    <a href="#">+51 977 776 058</a>
+                    <a href="https://wa.me/51977776058?text=Hola,%20tengo%20una%20consulta" target="_blank">
+                        <img class="footer-icon" src="{{ asset('img/WhatsApp-Icon.svg') }}" alt="WhatsApp Icon">
+                        +51 977 776 058</a>
                 </div>
                 
             </div>
             <div>
                 <h2 class="footer-subtitle">Siguenos en:</h2>
                 <div class="footer-info">
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">Tik Tok</a>
+                    <a href="https://www.facebook.com/profile.php?id=100064058949497"><img class="footer-icon" src="{{ asset('img/facebook.svg') }}" alt="Facebook Icon">Facebook</a>
+                    <a href="https://www.instagram.com/jamasporthuancayo/?utm_source=ig_web_button_share_sheet"><img class="footer-icon" src="{{ asset('img/instagram.svg') }}" alt="Instagram Icon">Instagram</a>
+                    <a href="https://www.tiktok.com/@jama.outlet?is_from_webapp=1&sender_device=pc"><img class="footer-icon" src="{{ asset('img/tiktok.svg') }}" alt="Tik Tok Icon">Tik Tok</a>
                 </div>
             </div>
             <div>
@@ -91,6 +96,11 @@
             </div>
         </div>
         <div class="footer-copyright">
+            <div class="footer-pay">
+                <img class="footer-icon" src="{{ asset('img/visa.svg') }}" alt="Visa Icon">
+                <img class="footer-icon" src="{{ asset('img/mastercard.svg') }}" alt="Mastercard Icon">
+                <img class="footer-icon" src="{{ asset('img/paypal.svg') }}" alt="Paypal Icon">
+            </div>
             <h3>©<?php echo date('Y'); ?> Todos los derechos reservados.</h3>
         </div>
     </footer>

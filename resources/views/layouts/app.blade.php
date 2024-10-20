@@ -65,6 +65,9 @@
                     <a href="https://wa.me/51977776058?text=Hola,%20tengo%20una%20consulta" target="_blank">
                         <img class="footer-icon" src="{{ asset('img/WhatsApp-Icon.svg') }}" alt="WhatsApp Icon">
                         +51 977 776 058</a>
+                        <a href="mailto:apovesmartinez@gmail.com" target="_blank">
+                            <img class="footer-icon" src="{{ asset('img/mail.svg') }}" alt="Mail Icon">
+                            apovesmartinez@gmail.com</a>
                 </div>
                 
             </div>
@@ -79,19 +82,19 @@
             <div>
                 <h2 class="footer-subtitle">Información:</h2>
                 <div class="footer-info">
-                    <a href="#">Nosotros</a>
-                    <a href="#">Tiendas</a>
-                    <a href="#">Blog</a>
+                    <a href="/nosotros">Nosotros</a>
+                    <a href="/tienda">Tiendas</a>
+                    <a href="/blog">Blog</a>
                 </div>
             </div>
 
             <div>
                 <h2 class="footer-subtitle">Política de Privacidad</h2>
                 <div class="footer-info">
-                    <a href="#">Términos y Condiciones</a>
-                    <a href="#">Condiciones de Envío</a>
-                    <a href="#">Políticas de Privacidad</a>
-                    <a href="#">Libro de reclamaciones</a>
+                    <a href="/terminos-y-condiciones">Términos y Condiciones</a>
+                    <a href="/condiciones-de-envio">Condiciones de Envío</a>
+                    <a href="/politica-de-privacidad">Políticas de Privacidad</a>
+                    <a href="/libro-de-reclamaciones">Libro de reclamaciones</a>
                 </div>
             </div>
         </div>

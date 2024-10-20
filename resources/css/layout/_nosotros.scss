@@ -1,0 +1,105 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+.nosotros{
+    background-color: #669BBC;
+    color: #FDF0D5;
+}
+.nosotros-title{
+    text-align: center;
+    font-size: 6rem;
+    margin: 0 0 1rem 0;
+    font-weight: bold;
+    span{
+        color: red;
+    }
+}
+
+.nosotros-content {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    
+    .nosotros-content-title{
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    p{
+        font-size: 1rem;
+        margin: 1.5rem;
+        color: #FDF0D5;
+    }
+    .nosotros-content-image{
+        height: 60rem;
+        
+    }
+}
+
+@include m.tablet {
+    .nosotros-content {
+        margin: 0 5rem 4rem 5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        
+        .nosotros-content-title{
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        p{
+            font-size: 1.2rem;
+            margin: 1.5rem;
+            color: #FDF0D5;
+        }
+        .nosotros-content-image{
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+@include m.desktop {
+    .nosotros-content {
+        margin: 0 10rem 4rem 10rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        
+        .nosotros-content-title{
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        p{
+            font-size: 2rem;
+            margin: 1.5rem;
+            color: #FDF0D5;
+        }
+        .nosotros-content-image{
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+.nosotros-caracteristicas{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    background-color: #003049;
+    padding: 4rem 0;
+    h2 {
+        font-size: 2rem;
+        color: #669BBC;
+        font-weight: bold;
+    }
+    p{
+        font-size: 1.2rem;
+        color: #648ca5;
+    }
+
+}
+.nosotros-caracteristicas-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}

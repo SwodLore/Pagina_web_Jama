@@ -7,10 +7,10 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/tienda', [HomeController::class, 'tienda']);
 Route::get('/nosotros', [HomeController::class, 'nosotros']);
 Route::get('/blog', [HomeController::class, 'blog']);
-Route::get('/terminos-y-condiciones', [HomeController::class, 'terminos-y-condiciones']);
-Route::get('/condiciones-de-envio', [HomeController::class, 'condiciones-de-envio']);
-Route::get('/politica-de-privacidad', [HomeController::class, 'politica-de-privacidad']);
-Route::get('/libro-de-reclamaciones', [HomeController::class, 'libro-de-reclamaciones']);
+Route::get('/terminos-y-condiciones', [HomeController::class, 'terminos_y_condiciones']);
+Route::get('/condiciones-de-envio', [HomeController::class, 'condiciones_de_envio']);
+Route::get('/politica-de-privacidad', [HomeController::class, 'politica_de_privacidad']);
+Route::get('/libro-de-reclamaciones', [HomeController::class, 'libro_de_reclamaciones']);
 
 
 Route::get('/login', [HomeController::class, 'login']);

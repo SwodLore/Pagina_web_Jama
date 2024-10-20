@@ -18,7 +18,7 @@
         </div>
         <div class="nosotros-caracteristicas-content">
             <img class="nosotros-icon" src="{{ asset('img/calidad.svg') }}" alt="Calidad Icon">
-            <h2 class="nosotros-caracteristicas-title">Alta Calidad</h2>
+            <h2 class="nosotros-caracteristicas-title">Alta <span>Calidad</span></h2>
             <p>Zapatillas originales de marcas top.</p>
         </div>
         <div class="nosotros-caracteristicas-content">

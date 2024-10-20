@@ -15,15 +15,17 @@
     <meta name="OG:description" content="Esta pagina web se trata de una tienda online de ventas de zapatillas en huancayo y poder enviar pedidos a otros lugares del peru.">
 
     <link rel="icon" href="{{ asset('img/Jama-Icon.png') }}" type="image/png">
-    {{-- <link rel="stylesheet" href="{{ asset('build/css/app.css') }}"> --}}
-    @vite('resources/css/app.scss')
+    
+    @vite(['resources/css/app.scss', 'resources/js/app.js'])
     <title>Jama Sports</title>
 </head>
 <body>
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <img src="{{ asset('img/Jama.png') }}" alt="Logo Jama Sports">
+                <a href="/">
+                    <img src="{{ asset('img/Jama.png') }}" alt="Logo Jama Sports">
+                </a>
             </div>
             <div class="header-search">
                 
@@ -43,14 +45,17 @@
             </div>
         </div>
         <div class="header-menu">
-            <ul class="header-menu-list">
-                <li><a class="boton" href="#">Marcas</a></li>
-                <li><a class="boton" href="#">Adidas</a></li>
-                <li><a class="boton" href="#">Nike</a></li>
-                <li><a class="boton" href="#">Puma</a></li>
-                <li><a class="boton" href="#">Reebok</a></li>
-                <li><a class="boton" href="#">Medidas/Tallas</a></li>
-            </ul>
+            <div class="mobile-menu">
+                <img src="{{ asset('img/barra.svg') }}" alt="icono menu resposive">
+            </div>
+            <nav class="header-menu-list">
+                <a class="boton" href="#">Marcas</a>
+                <a class="boton" href="#">Adidas</a>
+                <a class="boton" href="#">Nike</a>
+                <a class="boton" href="#">Puma</a>
+                <a class="boton" href="#">Reebok</a>
+                <a class="boton" href="#">Medidas/Tallas</a>
+            </nav>
         </div>
     </header>
 

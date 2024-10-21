@@ -1,0 +1,47 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.terminos {
+    background-color: #FDF0D5;
+}
+.terminos-container {
+    color: #003049;
+    margin: 0rem 2rem;
+    padding: 1rem;
+    h1{
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    h2{
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 1.5rem;
+    }
+
+    p{
+        margin: 0 2rem;
+        font-size: 1.5rem;
+        color: #003049;
+        span {
+            font-weight: bold;
+            color: #003049;
+        }
+    }
+    a {
+        text-decoration: underline;
+    }
+}
+
+@include m.tablet {
+    .terminos-container {
+        color: #003049;
+        margin: 0rem 10rem;
+    }
+}
+
+@include m.telefono {
+    .terminos-container {
+        color: #003049;
+        margin: 0rem 5rem;
+    }
+}

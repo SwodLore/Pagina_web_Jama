@@ -1,0 +1,68 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.marcas{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 20rem;
+    margin: 1rem;
+}
+
+.marcas img {
+    width: 0rem;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: .8;
+    transition: .5s ease;
+}
+
+.marcas img:hover {
+    cursor: crosshair;
+    width: 15rem;
+    opacity: 1;
+    filter: contrast(120%);
+}
+
+.marcas-title{
+    background-color: #669BBC;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+@include m.telefono {
+    .marcas{
+        display: flex;
+        width: 100%;
+        height: 40rem;
+        margin: 1rem;
+    }
+    .marcas img:hover {
+        width: 20rem;
+    }
+}
+
+@include m.tablet {
+    .marcas{
+        display: flex;
+        width: 100%;
+        height: 40rem;
+        margin: 1rem;
+    }
+    .marcas img:hover {
+        width: 28rem;
+    }
+}
+
+@include m.desktop {
+    .marcas{
+        display: flex;
+        width: 100%;
+        height: 50rem;
+        margin: 1rem;
+    }
+    .marcas img:hover {
+        width: 60rem;
+    }
+}

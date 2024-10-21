@@ -3,7 +3,33 @@
 @section('content')
 
 <main>
-    <h1>Hola</h1>
+    <div class="anuncios">
+        <div class="anuncio anuncio1">
+            <img src="{{ asset('img/Anuncio.webp') }}" alt="Anuncios">
+        </div>
+        <div class="anuncio anuncio2">
+            <img src="{{ asset('img/Anuncio.webp') }}" alt="Anuncios">
+        </div>
+        <div class="anuncio anuncio3">
+            <img src="{{ asset('img/Anuncio.webp') }}" alt="Anuncios">
+        </div>
+    </div>
+
+    <div class="articulos">
+
+    </div>
+    <div class="marcas-title">
+        <h1>Nuestras Marcas</h1>
+        <div class="marcas">
+            <img src="{{ asset('img/logo-adidas.webp') }}" alt="logo adidas">
+            <img src="{{ asset('img/logo-nike.webp') }}" alt="logo nike">
+            <img src="{{ asset('img/logo-puma.jpg') }}" alt="logo puma">
+            <img src="{{ asset('img/logo-reebok.jpg') }}" alt="logo reebok">
+            <img src="{{ asset('img/logo-cat.jpg') }}" alt="logo cat">
+            <img src="{{ asset('img/logo-jordan.jpg') }}" alt="logo jordan">
+            <img src="{{ asset('img/logo-under.jpg') }}" alt="logo under">
+        </div>
+    </div>
     <div class="tiendas">
         <h2>Conoce nuestras</h2>
         <h1>Tiendas Fisicas</h1>

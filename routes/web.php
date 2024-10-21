@@ -11,6 +11,7 @@ Route::get('/terminos-y-condiciones', [HomeController::class, 'terminos_y_condic
 Route::get('/condiciones-de-envio', [HomeController::class, 'condiciones_de_envio']);
 Route::get('/politica-de-privacidad', [HomeController::class, 'politica_de_privacidad']);
 Route::get('/libro-de-reclamaciones', [HomeController::class, 'libro_de_reclamaciones']);
+Route::post('/libro-de-reclamaciones', [HomeController::class, 'libro_de_reclamaciones']);
 
 
 Route::get('/login', [HomeController::class, 'login']);

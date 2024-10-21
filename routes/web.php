@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticuloController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -12,6 +13,8 @@ Route::get('/condiciones-de-envio', [HomeController::class, 'condiciones_de_envi
 Route::get('/politica-de-privacidad', [HomeController::class, 'politica_de_privacidad']);
 Route::get('/libro-de-reclamaciones', [HomeController::class, 'libro_de_reclamaciones']);
 Route::post('/libro-de-reclamaciones', [HomeController::class, 'libro_de_reclamaciones']);
+Route::get('/articulos', [ArticuloController::class, 'articulos']);
+Route::get('/articulos/{id}', [ArticuloController::class, 'articulosId']);
 
 
 Route::get('/login', [HomeController::class, 'login']);

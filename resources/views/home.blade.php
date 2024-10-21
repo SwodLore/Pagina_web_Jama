@@ -16,8 +16,45 @@
     </div>
 
     <div class="articulos">
-
+        <h1>Nuestros Productos</h1>
+        <div class="articulos-todos">
+            <div class="articulo-info">
+                <img src="{{ asset('img/adidas-modelo.webp') }}" alt="foto zapatillas">
+                <div class="articulos-info-content">
+                    <h2>Adidas</h2>
+                    <h3>Zapatillas adidas Hombre Outdoor Tracefinder |<span>IE5906</span></h3>
+                    <h3>Precio: <span>S/. 160.00</span></h3>
+                    <h3>Talla: <span>37 EUR</span></h3>
+                    <p>Envio Gratis</p>
+                    <a href="">Ver Producto</a>
+                </div>
+            </div>
+            <div class="articulo-info">
+                <img src="{{ asset('img/adidas-modelo.webp') }}" alt="foto zapatillas">
+                <div class="articulos-info-content">
+                    <h2>Adidas</h2>
+                    <h3>Zapatillas adidas Hombre Outdoor Tracefinder |<span>IE5906</span></h3>
+                    <h3>Precio: <span>S/. 160.00</span></h3>
+                    <h3>Talla: <span>37 EUR</span></h3>
+                    <p>Envio Gratis</p>
+                    <a href="">Ver Producto</a>
+                </div>
+            </div>
+            <div class="articulo-info">
+                <img src="{{ asset('img/adidas-modelo.webp') }}" alt="foto zapatillas">
+                <div class="articulos-info-content">
+                    <h2>Adidas</h2>
+                    <h3>Zapatillas adidas Hombre Outdoor Tracefinder |<span>IE5906</span></h3>
+                    <h3>Precio: <span>S/. 160.00</span></h3>
+                    <h3>Talla: <span>37 EUR</span></h3>
+                    <p>Envio Gratis</p>
+                    <a href="">Ver Producto</a>
+                </div>
+            </div>
+        </div>
+        <a href="">Ver todos los productos</a>
     </div>
+
     <div class="marcas-title">
         <h1>Nuestras Marcas</h1>
         <div class="marcas">

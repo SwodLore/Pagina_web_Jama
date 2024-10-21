@@ -36,7 +36,7 @@
             <div class="header-nav">
                 <nav class="nav-menu">
                     <ul class="nav-menu-list">
-                        <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/tienda.svg') }}" alt="Tiendas Icon">Tiendas</a></li>
+                        <li><a class="boton" href="/tienda"><img class="header-icon" src="{{ asset('img/tienda.svg') }}" alt="Tiendas Icon">Tiendas</a></li>
                         <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/mi_cuenta.svg') }}" alt="Mi cuenta Icon">Mi cuenta</a></li>
                         <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/favorito.svg') }}" alt="Favorito Icon"></a></li>
                         <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/carrito.svg') }}" alt="Carrito Icon"></a></li>
@@ -79,9 +79,9 @@
             <div>
                 <h2 class="footer-subtitle">Siguenos en:</h2>
                 <div class="footer-info">
-                    <a href="https://www.facebook.com/profile.php?id=100064058949497"><img class="footer-icon" src="{{ asset('img/facebook.svg') }}" alt="Facebook Icon">Facebook</a>
-                    <a href="https://www.instagram.com/jamasporthuancayo/?utm_source=ig_web_button_share_sheet"><img class="footer-icon" src="{{ asset('img/instagram.svg') }}" alt="Instagram Icon">Instagram</a>
-                    <a href="https://www.tiktok.com/@jama.outlet?is_from_webapp=1&sender_device=pc"><img class="footer-icon" src="{{ asset('img/tiktok.svg') }}" alt="Tik Tok Icon">Tik Tok</a>
+                    <a href="https://www.facebook.com/profile.php?id=100064058949497" target="_blank"><img class="footer-icon" src="{{ asset('img/facebook.svg') }}" alt="Facebook Icon">Facebook</a>
+                    <a href="https://www.instagram.com/jamasporthuancayo/?utm_source=ig_web_button_share_sheet" target="_blank"><img class="footer-icon" src="{{ asset('img/instagram.svg') }}" alt="Instagram Icon">Instagram</a>
+                    <a href="https://www.tiktok.com/@jama.outlet?is_from_webapp=1&sender_device=pc" target="_blank"><img class="footer-icon" src="{{ asset('img/tiktok.svg') }}" alt="Tik Tok Icon">Tik Tok</a>
                 </div>
             </div>
             <div>

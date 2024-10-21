@@ -15,7 +15,7 @@
 }
 
 .nosotros-content {
-    margin: 0;
+    margin: 0 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
@@ -72,6 +72,30 @@
         }
         p{
             font-size: 2rem;
+            margin: 1.5rem;
+            color: #FDF0D5;
+            text-align: justify;
+        }
+        .nosotros-content-image{
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+@include m.desktopXL {
+    .nosotros-content {
+        margin: 0 10rem 4rem 10rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        
+        .nosotros-content-title{
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        p{
+            font-size: 2.6rem;
             margin: 1.5rem;
             color: #FDF0D5;
             text-align: justify;

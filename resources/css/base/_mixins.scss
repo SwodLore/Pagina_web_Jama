@@ -19,6 +19,11 @@
         @content;
     }
 }
+@mixin desktopXXL {
+    @media (min-width: v.$desktopXXL ) {
+        @content;
+    }
+}
 @mixin contenedor {
     width: 95%;
     max-width: 120rem;

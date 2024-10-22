@@ -11,6 +11,6 @@ class ArticuloController extends Controller
     }
 
     public function articulosId(){
-        return view('arituclos-id');
+        return view('articulos-id');
     }
 }

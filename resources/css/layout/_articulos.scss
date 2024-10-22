@@ -1,19 +1,36 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
 
 .articulos{
+    margin-bottom: 4rem;
     h1{
         font-size: 5rem;
         font-weight: bold;
         text-align: center;
     }
+    .ver-todos{
+        font-size: 1.5rem;
+        color: #003049;
+        background-color: #FDF0D5;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        margin-left: 2rem;
+    }
+    .ver-todos:hover{
+        background-color: #669BBC;
+        color: #FDF0D5;
+    }
 }
 .articulos-todos{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 2rem 10rem;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 2rem 2rem;
     gap: 4rem;
+    padding: 2rem;
 }
 .articulo-info{
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    border: 1px solid #777;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     border-radius: 2rem;
     h2{
         font-size: 2.5rem;
@@ -26,6 +43,7 @@
         color: #00CCFF;
         font-weight: bold;
         text-align: start;
+        margin: 0 3rem;
     }
     span {
         color: #222;
@@ -41,5 +59,31 @@
         width: 100%;
         height: auto;
         border-bottom: 1px solid #999;
+    }
+}
+.articulo-info:hover{
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+}
+.articulos-info-content{
+    margin: 1.5rem;
+}
+
+@include m.tablet {
+    .articulos-todos{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 2rem 5rem;
+        gap: 4rem;
+        padding: 2rem;
+    }
+}
+
+@include m.desktop {
+    .articulos-todos{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 2rem 10rem;
+        gap: 4rem;
+        padding: 2rem;
     }
 }

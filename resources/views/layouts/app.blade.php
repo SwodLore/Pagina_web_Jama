@@ -62,6 +62,9 @@
     @yield('content')
 
     <footer>
+        <a href="https://wa.me/51977776058?text=Hola,%20tengo%20una%20consulta" class="whatsapp-button" target="_blank">
+            <img class="footer-icon" src="{{ asset('img/WhatsApp-Icon.svg') }}" alt="WhatsApp">
+        </a>
         <h2 class="footer-title">Jama <span class="footer-title-span">Sports</span></h2>
         <div class="footer-content">
             <div>

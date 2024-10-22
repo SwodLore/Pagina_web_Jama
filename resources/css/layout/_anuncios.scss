@@ -1,6 +1,7 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 //comentario
+//comentario 2
 .anuncios{
     display: grid;
     grid-template-columns: repeat(2, 1fr);

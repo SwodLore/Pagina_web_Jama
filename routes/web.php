@@ -20,9 +20,9 @@ Route::get('/articulos/{id}', [ArticuloController::class, 'articulosId']);
 Route::get('/login', [HomeController::class, 'login']);
 
 // ventanas
-Route::get('login',function(){
-    return "Este es el login";
-});
+// Route::get('login',function(){
+//     return "Este es el login";
+// });
 
 Route::get('registro/{post}/{categoria?}',function($post , $categoria = null){
     return "Este es el registro {$post} y {$categoria}";

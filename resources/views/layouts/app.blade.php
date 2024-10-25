@@ -37,7 +37,7 @@
                 <nav class="nav-menu">
                     <ul class="nav-menu-list">
                         <li><a class="boton" href="/tienda"><img class="header-icon" src="{{ asset('img/tienda.svg') }}" alt="Tiendas Icon">Tiendas</a></li>
-                        <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/mi_cuenta.svg') }}" alt="Mi cuenta Icon">Mi cuenta</a></li>
+                        <li><a class="boton" href="/login"><img class="header-icon" src="{{ asset('img/mi_cuenta.svg') }}" alt="Mi cuenta Icon">Mi cuenta</a></li>
                         <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/favorito.svg') }}" alt="Favorito Icon"></a></li>
                         <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/carrito.svg') }}" alt="Carrito Icon"></a></li>
                     </ul>

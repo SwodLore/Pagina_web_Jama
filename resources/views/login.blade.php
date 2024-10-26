@@ -66,7 +66,6 @@
                 <div class="overlay-panel overlay-left">
                     <img src="{{ asset('img/Jama _sin _fondo.png') }}" alt="Logo JamaSports">
                     <h1>¡Bienvenido!</h1> 
-                    
                     <p>
                         Inicia sesión con tu cuenta
                     </p>

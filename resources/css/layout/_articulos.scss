@@ -4,7 +4,7 @@
 .articulos{
     margin-bottom: 4rem;
     h1{
-        font-size: 5rem;
+        font-size: 2rem;
         font-weight: bold;
         text-align: center;
     }
@@ -56,6 +56,7 @@
         font-weight: bold;
     }
     img{
+        border-radius: 2rem;
         width: 100%;
         height: auto;
         border-bottom: 1px solid #999;
@@ -64,6 +65,7 @@
 .articulo-info:hover{
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
 }
+
 .articulos-info-content{
     margin: 1.5rem;
 }
@@ -86,4 +88,373 @@
         gap: 4rem;
         padding: 2rem;
     }
+}
+/* articulos-filtro */
+
+.articulos-principal{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    h2{
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin: 1.5rem;
+    }
+    h3 {
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: start;
+        margin: 1rem;
+    }
+    select {
+        margin: 0 1rem;
+        
+    }
+    input {
+        margin: 0 1rem;
+    }
+    table {
+        margin: 0 1rem;
+    }
+}
+
+@include m.tablet {
+    .articulos-principal{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        h2{
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 2rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: start;
+            margin: 1rem;
+        }
+        select {
+            margin: 0 2rem;
+            width: 17rem;
+            padding: 1rem;
+            border: 1px solid #444;
+            border-radius: 1rem;
+            appearance: none;
+            background-image: url(../../../public/img/flecha-abajo.svg); 
+            background-repeat: no-repeat;
+            background-position: left 14rem center; 
+            background-size: 3rem; 
+            outline: none; 
+            cursor: pointer;
+        }
+        input {
+            margin: 0 2rem;
+        }
+        table {
+            margin: 0 2rem;
+        }
+        .articulos-title{
+            font-size: 3rem;
+        }
+    }
+}
+
+
+@include m.desktop {
+    .articulos-principal{
+        margin: 2rem 10rem;
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        .articulos-title{
+            font-size: 5rem;
+        }
+    }
+}
+
+.size-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.size-table th, .size-table td {
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.size-table th {
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: bold;
+}
+
+.size-table td input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Estilos para los checkboxes de marcas */
+.brand-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.brand-checkboxes label {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Estilos para el slider de precios */
+.slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 2rem;
+}
+
+.slider-wrapper label {
+    font-size: 1rem;
+    color: #333;
+}
+
+input[type="range"] {
+    width: 100%;
+    appearance: none;
+    background-color: #ddd;
+    height: 8px;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.price-value {
+    font-size: 1rem;
+    color: #333;
+}
+
+//Articulos-info-especifico
+.articulos-info{
+    margin: 2rem 1rem;
+}
+.articulos-info-especifico{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem;
+    border: 1px solid #777;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    border-radius: 2rem;
+    .articulos-imagen{
+        img{
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #999;
+            border-top-left-radius: 2rem;
+        }
+    }
+    a{
+        padding: 0 2rem;
+    }
+    .articulos-info-content{
+        padding: 0;
+    }
+    .articulos-todos {
+        h2{
+            margin: 0 0.5rem;
+            font-size: 1rem;
+        }
+        h3{
+            margin: 0 0.5rem;
+            font-size: 0.7rem;
+        }
+        p{
+            margin: 0 0.5rem;
+            font-size: 1rem;
+        }
+    }
+}
+.articulos-info-comprar{
+    border-left: 1px solid #777;
+    padding-left: 1rem;
+    grid-column: 2/3;
+    grid-row: 1/4;
+    h2{
+        margin-top: 1rem;
+        font-size: 2rem;
+        
+    }
+    h3{
+        font-size: 1.2rem;
+        margin: 1rem 0;
+        text-align: start;
+        
+    }
+    .precio{
+        color: green;
+    }
+    span{
+        font-weight: bold;
+    }
+    select{
+            margin: 1rem 2rem;
+            width: 8rem;
+            padding: 1rem;
+            border: 1px solid #444;
+            border-radius: 1rem;
+            appearance: none;
+            background-image: url(../../../public/img/flecha-abajo.svg); 
+            background-repeat: no-repeat;
+            background-position: left 14rem center; 
+            background-size: 3rem; 
+            outline: none; 
+            cursor: pointer;
+    }
+    a {
+        color: #00CCFF;
+        
+    }
+    p{
+        font-size: 1.5rem;
+        color: green;
+    }
+    button {
+        border-radius: 1rem;
+        border: none;
+        padding: 1rem 1.5rem;
+    }
+    .boton-comprar{
+        background-color: #00CCFF;
+    }
+    .boton-agregar{
+        background-color: #bbb;
+    }
+    input{
+        border: 1px solid #444;
+        width: 8rem;
+        height: 2rem;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        margin: 1rem 2rem;
+    }
+    .botones{
+        display: grid;
+        padding: 1rem 3rem;
+        grid-template-rows: 1fr 1fr;
+        gap: 1rem;
+    }
+    .tallas {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+.articulos-info-opiniones{
+    margin: 2rem;
+    border-top: 1px solid #777;
+    h2{
+        font-size: 3rem;
+        margin: 1rem 0;
+        
+    }
+    span{
+        font-weight: bold;
+    }
+    p{
+        font-size: 1.6rem;
+    }
+}
+
+@include m.tablet {
+    .articulos-info{
+        margin: 2rem 3rem;
+    }
+    .articulos-info-especifico{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 1rem;
+        border: 1px solid #777;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        border-radius: 2rem;
+        .articulos-imagen{
+            img{
+                width: 100%;
+                height: auto;
+                border-bottom: 1px solid #999;
+                border-top-left-radius: 2rem;
+            }
+        }
+    }
+    .articulos-info-comprar{
+        border-left: 1px solid #777;
+        padding-left: 2rem;
+        grid-column: 2/3;
+        grid-row: 1/4;
+        h2{
+            margin-top: 1rem;
+            font-size: 3rem;
+            
+        }
+        h3{
+            font-size: 2rem;
+            margin: 1rem 0;
+            text-align: start;
+            
+        }
+        select{
+                width: 17rem;
+        }
+        input{
+            border: 1px solid #444;
+            width: 20rem;
+            height: 2rem;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 1rem 2rem;
+        }
+        
+    }
+}
+@include m.desktop {
+    .articulos-info{
+        margin: 2rem 10rem;
+    }
+}
+
+.volver{
+    background-color: #669BBC;
+    color: #FDF0D5;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: none;
+}
+.volver:hover{
+    background-color: #00CCFF;
+    color: #FDF0D5;
 }

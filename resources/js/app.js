@@ -17,9 +17,8 @@ function navegacionResponsive() {
     if (window.innerWidth < 480) { 
         header.classList.toggle('expand'); 
     }
-    
-    
 }
+
 //Login
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
@@ -34,3 +33,13 @@ signUpButton.addEventListener('click', () =>
 signInButton.addEventListener('click', () =>
     container.classList.remove('right-panel-active')
 );
+
+//Filtros
+
+const priceRange = document.getElementById('priceRange');
+const priceValue = document.querySelector('.price-value');
+
+priceRange.addEventListener('input', function () {
+    priceValue.textContent = priceRange.value;
+});
+

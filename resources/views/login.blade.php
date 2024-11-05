@@ -19,65 +19,36 @@
     @vite(['resources/css/app.scss', 'resources/js/app.js'])
     <title>Jama Sports</title>
 </head>
-<body>
+<body class="login">
     <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            <form action="#">
-            <h1>Crea tu Cuenta</h1>
-            <div class="social-container">
-                <a href="#" class="social>">
-                    <i class="fab fa-facebook-f"><img src="{{ asset('img/facebook-color.svg') }}" alt="Facebook Icon"></i>
-                </a>
-                <a href="#" class="social>">
-                    <i class="fab fa-google" id="red"><img src="{{ asset('img/google.svg') }}" alt="Google Icon"></i>
-                </a>
-            </div>
-                <span>o usa tu email como registro</span>
-                <input type="text" placeholder="Nombre" />
-                <input type="text" placeholder="Apellido" />
-                <input type="email" placeholder="Email" />
-                <input type="date" placeholder="Fecha de Nacimiento">
-                <input type="number" placeholder="DNI">
-                <input type="password" placeholder="Password" />
-                <input type="password" placeholder="Confirmar Password" />
-                <button class="ghost" id="lila">Registrar</button>
-            </form>
-        </div>
         <div class="form-container sign-in-container">
-            <form action="#">
-                    <h1>Iniciar Sesión</h1>
+            <form action="{{ route('login.submit') }}" method="POST">
+                @csrf 
+                <h1>Iniciar Sesión</h1>
                 <div class="social-container">
-                    <a href="#" class="social>">
-                        <i class="fab fa-facebook-f"><img src="{{ asset('img/facebook-color.svg') }}" alt="Facebook Icon"></i>
+                    <a href="#" class="social">
+                        <img src="{{ asset('img/facebook-color.svg') }}" alt="Facebook Icon">
                     </a>
-                    <a href="#" class="social>">
-                        <i class="fab fa-google" id="red"><img src="{{ asset('img/google.svg') }}" alt="Google Icon"></i>
+                    <a href="#" class="social">
+                        <img src="{{ asset('img/google.svg') }}" alt="Google Icon">
                     </a>
                 </div>
-                    <span>o usa tu email</span>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <a href="#">Olvidaste tu contraseña?</a>
-                    <button class="ghost-naranja" >Iniciar sesión</button>
+                <span>o usa tu email</span>
+                <input type="email" placeholder="Email" name="correo" required>
+                <input type="password" placeholder="Password" name="contrasena" required>
+                <a href="#">Olvidaste tu contraseña?</a>
+                <button type="submit" class="ghost-naranja">Iniciar sesión</button>
             </form>
         </div>
         <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
+                <div class="overlay-right">
                     <img src="{{ asset('img/Jama _sin _fondo.png') }}" alt="Logo JamaSports">
-                    <h1>¡Bienvenido!</h1> 
-                    <p>
-                        Inicia sesión con tu cuenta
-                    </p>
-                    <button class="ghost" id="signIn">Inicia sesión</button>
+                    <div class="centrar">
+                        <h2>Hola!!!</h2>
+                        <p>Crear tu cuenta</p>
+                        <button class="ghost" id="signUp"><a href="/register">Registrar</a></button>
+                    </div>
                 </div>
-                <div class="overlay-panel overlay-right">
-                    <img src="{{ asset('img/Jama _sin _fondo.png') }}" alt="Logo JamaSports">
-                    <h1>Hola!!!</h1>
-                    <p>Crear tu cuenta</p>
-                    <button class="ghost" id="signUp">Registrar</button>
-                </div>
-            </div>
         </div>
     </div>
 </body>

@@ -90,36 +90,18 @@
             <div class="articulos">
                 <h1 class="articulos-title">Nuestros Productos</h1>
                 <div class="articulos-todos">
-                    <a href="/articulos/1" class="articulo-info">
-                        <img src="{{ asset('img/adidas-modelo.webp') }}" alt="foto zapatillas">
+                    @foreach ( $articulos as $articulo)
+                    <a href="/articulos/{{$articulo->producto_id}}" class="articulo-info">
+                        <img src="{{ asset('img/productos/' . $articulo->imagen) }}" alt="foto zapatillas">
                         <div class="articulos-info-content">
-                            <h2>Adidas</h2>
-                            <h3>Zapatillas adidas Hombre Outdoor Tracefinder |<span>IE5906</span></h3>
-                            <h3>Precio: <span>S/. 160.00</span></h3>
-                            <h3>Talla: <span>37 EUR</span></h3>
+                            <h2>{{$articulo->marca}}</h2>
+                            <h3>{{$articulo->nombre}} |<span>{{$articulo->codigo}}</span></h3>
+                            <h3>Precio: <span>S/. {{$articulo->precio}}</span></h3>
+                            <h3>Talla: <span>{{$articulo->talla}} EUR</span></h3>
                             <p>Envio Gratis</p>
                         </div>
                     </a>
-                    <a href="/articulos/2" class="articulo-info">
-                        <img src="{{ asset('img/adidas-modelo.webp') }}" alt="foto zapatillas">
-                        <div class="articulos-info-content">
-                            <h2>Adidas</h2>
-                            <h3>Zapatillas adidas Hombre Outdoor Tracefinder |<span>IE5906</span></h3>
-                            <h3>Precio: <span>S/. 160.00</span></h3>
-                            <h3>Talla: <span>37 EUR</span></h3>
-                            <p>Envio Gratis</p>
-                        </div>
-                    </a>
-                    <a href="/articulos/3" class="articulo-info">
-                        <img src="{{ asset('img/adidas-modelo.webp') }}" alt="foto zapatillas">
-                        <div class="articulos-info-content">
-                            <h2>Adidas</h2>
-                            <h3>Zapatillas adidas Hombre Outdoor Tracefinder |<span>IE5906</span></h3>
-                            <h3>Precio: <span>S/. 160.00</span></h3>
-                            <h3>Talla: <span>37 EUR</span></h3>
-                            <p>Envio Gratis</p>
-                        </div>
-                    </a>
+                    @endforeach
                 </div>
             </div>
         </div>

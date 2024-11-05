@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Articulo;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
-        return view('home');
+        $articulos = Articulo::limit(3)->get();
+        return view('home', compact('articulos'));
     }
     public function tienda(){
         return view('tienda');
@@ -32,7 +34,4 @@ class HomeController extends Controller
         return view('libro-de-reclamaciones');
     }
 
-    public function login(){
-        return view('login');
-    }
 }

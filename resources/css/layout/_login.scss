@@ -1,8 +1,9 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
+
 .container {
-    background: #fff;
+    background: #eee;
     border-radius: 1rem;
     box-shadow: 0 1.4rem 2.8rem rgba(0, 0, 0, 0.25), 0, 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
@@ -42,6 +43,12 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    border-radius: 1rem;
+    font-weight: bold;
+    input::placeholder{
+        color: #222;
+        font-weight: bold;
+    }
 }
 
 @include m.tablet { 
@@ -171,78 +178,65 @@
     z-index: 100;
   }
   
-.overlay {
-    background: #ff416c;
-    // background-image: linear-gradient(#ff8a00, #e52e71);
-    background: linear-gradient(#ff8a00, #e52e71) no-repeat 0 0 / cover;
-    color: #fff;
-    position: relative;
-    left: -100%;
-    height: 100%;
-    width: 200%;
-    transform: translateX(0);
-    transition: tranform 0.6s ease-in-out;
-  }
-  
-  .overlay-panel {
-    position: absolute;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 40px;
-    height: 100%;
-    width: 50%;
-    text-align: center;
-    transform: translateX(0);
-    transition: transform 0.6s ease-in-out;
-    img {
-    position: absolute; 
-    top: 1rem; 
-    right: 1rem; /* Ajusta este valor también según tus preferencias */
-    }
-  }
 
   
   .overlay-right {
-    right: 0;
+    background: linear-gradient(#ff8a00, #e52e71) no-repeat 0 0 / cover;
+    color: #fff;
+    position: relative;
+    left: 0;
+    height: 100%;
+    width: 100%;
     transform: translateX(0);
+    transition: tranform 0.6s ease-in-out;
+    h2 {
+      font-size: 3rem;
+      color: #333;
+      font-weight: bold;
+    }
+    p{
+      font-size: 2rem;
+      color: #333;
+      font-weight: bold;
+    }
+    a{
+      font-size: 1.6rem;
+      margin: 1rem 0;
+      color: #fff;
+      text-decoration: underline;
+    }
   }
   
   .overlay-left {
     background: linear-gradient( #80FFDB,#5390D9) no-repeat 0 0 / cover;
-    transition: translateX(-20%);
-  }
-  
-  /* Animation */
-  
-  /* Move signin to the right */
-  .container.right-panel-active .sign-in-container {
-    transform: translateX(100%);
-  }
-  
-  /* Move overlay to left */
-  .container.right-panel-active .overlay-container {
-    transform: translateX(-100%);
-  }
-  
-  /* Bring sign up over sign in */
-  .container.container.right-panel-active .sign-up-container {
-    transform: translateX(100%);
-    opacity: 1;
-    z-index: 5;
-  }
-  
-  /* Move overlay back to right */
-  .container.right-panel-active .overlay {
-    transform: translateX(50%);
-  }
-  
-  .container.right-panel-active .overlay-left {
+    color: #fff;
+    position: relative;
+    left: 0;
+    height: 100%;
+    width: 100%;
     transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+    h2 {
+      font-size: 3rem;
+      color: #fff;
+      font-weight: bold;
+    }
+    p{
+      font-size: 2rem;
+      color: #fff;
+      font-weight: bold;
+    }
+    a{
+        font-size: 1.6rem;
+        margin: 1rem 0;
+        color: #fff;
+        text-decoration: underline;
+    }
   }
-  
-  .container.right-panel-active .overlay-right {
-    transform: translateX(20%);
+  .centrar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
   }

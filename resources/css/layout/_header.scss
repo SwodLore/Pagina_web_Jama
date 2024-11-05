@@ -39,7 +39,10 @@
 
     display: flex;
     flex-direction: column;
+    justify-items: center;
     align-items: center;
+    justify-content: center;
+    padding: 0;
     margin: 0;
     gap:0;
     box-sizing: border-box;

@@ -19,11 +19,11 @@ class AdminFactory extends Factory
         return [
             'nombre' => $this->faker->firstName,
             'apellido' => $this->faker->lastName,
-            'correo' => $this->faker->unique()->safeEmail,
+            'email' => $this->faker->unique()->safeEmail,
             'fecha_nacimiento' => $this->faker->date(),
             'DNI' => $this->faker->unique()->numerify('########'), // Generar un DNI de 8 dígitos
-            'contrasena' => bcrypt('password'), // Cambia esto según tus necesidades
-            'rol' => 3, // Rol por defecto
+            'password' => bcrypt('password'), // Cambia esto según tus necesidades
+            'rol' => 'admin', // Rol por defecto
         ];
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthAdminRequest;
 use App\Models\Admin;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -94,4 +96,32 @@ class AdminController extends Controller
         return view('admin/admin-table-ver', compact('admin'));
     }
 
+    public function login(){
+        if(!auth()->guard('admin')->check()){
+            return view('admin/login-admin');
+        }
+        return redirect()->route('admin.vista');
+    }
+    
+    public function auth(AuthAdminRequest $request){
+        
+        if($request->validated()){
+            if(auth()->guard('admin')->attempt([
+                'email' => $request->email,
+                'password' => $request->password,
+            ])){
+                $request->session()->regenerate();
+                session()->flash('success', '¡Inicio de sesión exitoso! Bienvenido.');
+                return redirect()->route('admin.vista');
+            }else{
+                return redirect()->route('login.admin')->withErrors(['error' => 'Credenciales incorrectas.'])
+                ->withInput();
+            }
+        }
+    }
+
+    public function logout(){
+        auth()->guard('admin')->logout();
+        return redirect()->route('login.admin');
+    }
 }

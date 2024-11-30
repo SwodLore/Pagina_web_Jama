@@ -10,7 +10,9 @@
 <body class="trabajadores">
     <div class="sidebar">
         <div class="logo">@ Jama Sports</div>
-        <img src="{{ asset('img/Jama.png') }}" alt="Logo de la tienda">
+        <a href="/">
+            <img src="{{ asset('img/Jama.png') }}" alt="Logo Jama Sports">
+        </a>
         <ul class="menu">
             <li><a href="/admin">Inicio</a></li>
             <li><a href="/admin/trabajadores">Gestionar Trabajadores</a></li>
@@ -18,14 +20,18 @@
             <li><a href="/admin/reportes-compras">Reporte de Compras</a></li>
             <li><a href="/admin/reportes-ventas">Reporte de Ventas</a></li>
             <li><a href="/admin/reportes-inventario">Reporte de Inventario</a></li>
-            <li><a href="/logout">Cerrar Sesión</a></li>
+            <li><a onclick="document.getElementById('AdminLogoutForm').submit();" href="#">Cerrar Sesión</a>
+            <form id="AdminLogoutForm" action="{{ route('logout.admin') }}" method="POST">
+                @csrf
+            </form>
+            </li>
         </ul>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
         <div class="header-admin">
-            <h1>Dashboard Admin</h1>
+            <h1><span class="welcome">Bienvenido {{ auth()->guard('admin')->user()->nombre.' ' }}</span> Dashboard Admin</h1>
             <div class="profile">
                 <span class="notification">🔔 2</span>
                 <span class="profile-name">Renee McKelvey</span>

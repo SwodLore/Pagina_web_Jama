@@ -16,10 +16,10 @@ class TrabajadorSeeder extends Seeder
         $trabajador = new Trabajador();
         $trabajador->nombre = 'Alessandro';
         $trabajador->apellido = 'Poves';
-        $trabajador->correo = 'apovesmartinez@gmail.com';
+        $trabajador->email = 'apovesmartinez@gmail.com';
         $trabajador->fecha_nacimiento = '2004-11-20'; //YYYY-MM-DD
         $trabajador->DNI = '74909544';
-        $trabajador->contrasena = bcrypt('12345678');
+        $trabajador->password = bcrypt('12345678');
         $trabajador->salario = 1000;
         $trabajador->departamento = 'programador';
         $trabajador->save();

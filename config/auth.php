@@ -34,21 +34,18 @@ return [
     | Supported: "session"
     |
     */
-
     'guards' => [
         'user' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
-        'trabajador' => [
-            'driver' => 'session',
-            'provider' => 'trabajadores',
-        ],
-
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
+        ],
+        'trabajador' => [
+            'driver' => 'session',
+            'provider' => 'trabajadores',
         ],
     ],
 
@@ -73,23 +70,16 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\User::class,
         ],
-
-        'trabajadores' => [
-        'driver' => 'eloquent',
-        'model' => env('AUTH_MODEL',App\Models\Trabajador::class),
-        ],
-
         'admins' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL',App\Models\Admin::class),
+            'model' => App\Models\Admin::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'trabajadores' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Trabajador::class,
+        ],
     ],
 
     /*
@@ -115,6 +105,18 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'trabajadores' => [
+            'provider' => 'trabajadores',
+            'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
         ],

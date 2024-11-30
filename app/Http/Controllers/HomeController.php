@@ -2,17 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anuncio;
 use App\Models\Articulo;
+use App\Models\Inventario;
+use App\Models\Talla;
+use App\Models\Tienda;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
-        $articulos = Articulo::limit(3)->get();
-        return view('home', compact('articulos'));
+        $anuncios = Anuncio::limit(3)->get();
+        $articulos = Articulo::with(['marca:id,nombre,descuento'])
+        ->limit(4)
+        ->get();
+        $tiendas = Tienda::limit(3)->get();
+        return view('home', compact('articulos','tiendas','anuncios'));
     }
     public function tienda(){
-        return view('tienda');
+        $tiendas = Tienda::limit(3)->get();
+        return view('tienda', compact('tiendas'));
+    }
+    public function tallas(){
+        $tallas = Talla::all();
+        return view('tallas', compact('tallas'));
     }
     public function nosotros(){
         return view('nosotros');

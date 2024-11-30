@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class AdminSeeder extends Seeder
 {
@@ -16,10 +16,11 @@ class AdminSeeder extends Seeder
         $admin = new Admin();
         $admin->nombre = 'Alejandro';
         $admin->apellido = 'Perez';
-        $admin->correo = 'admin@jamasports.com';
+        $admin->email = 'admin@jamasports.com';
         $admin->fecha_nacimiento = '1999-02-02';
-        $admin->DNI = '12345670';
-        $admin->contrasena = bcrypt('admin');
+        $admin->DNI = '12345678';
+        $admin->password = bcrypt('admin12345');
+        $admin->remember_token = Str::random(10);
         $admin->save();
     }
 }

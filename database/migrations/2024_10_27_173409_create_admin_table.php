@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 60);
             $table->string('apellido', 60);
-            $table->string('correo', 60)->unique();
+            $table->string('email', 60)->unique();
             $table->date('fecha_nacimiento');
             $table->string('DNI',8)->unique();
-            $table->string('contrasena', 60);
-            $table->tinyInteger('rol')->default(3);
+            $table->string('password');
+            $table->enum('rol', ['usuario', 'trabajador', 'admin'])->default('admin');
             $table->rememberToken();
             $table->timestamps(); 
         });

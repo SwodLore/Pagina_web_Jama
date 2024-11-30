@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthTrabajadorRequest;
 use App\Models\Articulo;
+use App\Models\Descuento;
+use App\Models\Inventario;
+use App\Models\Marca;
+use App\Models\Talla;
 use Illuminate\Http\Request;
 
 class TrabajadorController extends Controller
@@ -11,143 +16,175 @@ class TrabajadorController extends Controller
         return view('trabajador/trabajador-welcome');
     }
 
-    public function inventario(Request $request){
-        $query = Articulo::query(); // Crea una consulta base
+    public function inventario(Request $request)
+    {
+        $query = Inventario::with(['producto.marca', 'talla']);
 
-        // Verifica si hay parámetros de búsqueda
         if ($request->has('filter') && $request->has('search')) {
             $filter = $request->input('filter');
             $search = $request->input('search');
-
-            // Filtra según el valor del filtro seleccionado
-            $query->where($filter, 'like', '%' . $search . '%');
+    
+            switch ($filter) {
+                case 'marca':
+                    // Filtrar por nombre de la marca
+                    $query->whereHas('producto.marca', function ($q) use ($search) {
+                        $q->where('nombre', 'like', '%' . $search . '%');
+                    });
+                    break;
+    
+                case 'nombre':
+                case 'codigo':
+                case 'color':
+                    // Filtrar por campos directos del producto
+                    $query->whereHas('producto', function ($q) use ($filter, $search) {
+                        $q->where($filter, 'like', '%' . $search . '%');
+                    });
+                    break;
+    
+                case 'precio':
+                    // Filtrar por precio exacto o rango
+                    if (strpos($search, '-') !== false) {
+                        // Si el usuario ingresa un rango (ejemplo: 50-100)
+                        [$min, $max] = explode('-', $search);
+                        $query->whereHas('producto', function ($q) use ($min, $max) {
+                            $q->whereBetween('precio', [(float) $min, (float) $max]);
+                        });
+                    } else {
+                        // Precio exacto
+                        $query->whereHas('producto', function ($q) use ($search) {
+                            $q->where('precio', (float) $search);
+                        });
+                    }
+                    break;
+    
+                case 'talla':
+                    // Filtrar por talla
+                    $query->whereHas('talla', function ($q) use ($search) {
+                        $q->where('talla_eur', 'like', '%' . $search . '%');
+                    });
+                    break;
+            }
         }
 
-        $articulos = $query->paginate(6);
-        return view('trabajador/trabajador-inventario', compact('articulos'));
+        // Paginar los resultados
+        $inventarios = $query->get()->groupBy('producto_id');
+
+        return view('trabajador.trabajador-inventario', compact('inventarios'));
     }
 
-    public function create(){
-        return view('trabajador/trabajador-inventario-create');
+    public function create()
+    {
+        $articulos = Articulo::whereDoesntHave('inventarios.talla')->get();
+
+        return view('trabajador.trabajador-inventario-create', compact('articulos'));
     }
 
-    public function edit($id){
-        $articulo = Articulo::find($id);
-        return view('trabajador/trabajador-inventario-edit', compact('articulo'));
+    public function add($id){
+        $inventarios = Inventario::with(['producto.marca', 'talla'])->where('producto_id', $id)->get();
+
+        $tallas = Talla::all();
+        if ($inventarios->isEmpty()) {
+            abort(404, 'Inventario no encontrado');
+        }
+
+        $tallasUnicas = $inventarios->pluck('talla')->unique('id');
+
+        return view('trabajador/trabajador-inventario-add', compact('inventarios', 'tallas','tallasUnicas'));
     }
     
-    public function store(Request $request){
-        $articulo = new Articulo;
-
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'marca' => 'required|string|max:255',
-            'codigo' => 'required|string|max:100',
-            'imagen' => 'required|image|max:2048',
-            'color' => 'required|string|max:50',
-            'precio' => 'required|numeric|min:0',
-            'talla' => 'required|string|max:10',
-            'descripcion' => 'nullable|string|max:500',
+    public function store(Request $request, $id){
+        // Validar los datos recibidos
+        $validated = $request->validate([
+            'talla_eur' => 'required|exists:tallas,id',  
+            'cantidad' => 'required|integer|min:0',
         ]);
 
-        if ($request->hasFile('imagen')) {
-            $imagen = $request->file('imagen');
-            $filename = time() . '.' . $imagen->getClientOriginalExtension();
-            $imagen->move(public_path('img/productos'), $filename);
-            $path = $filename; 
-        } else {
-            return redirect()->back()->withErrors(['imagen' => 'La imagen es obligatoria.']);
-        }
+        // Crear un nuevo inventario
+        Inventario::create([
+            'producto_id' => $id, 
+            'talla_id' => $validated['talla_eur'],  
+            'cantidad' => $validated['cantidad'],  
+        ]);
 
-        $articulo->nombre = $request->input('nombre');
-        $articulo->marca = $request->input('marca');
-        $articulo->codigo = $request->input('codigo');
-        $articulo->imagen = $path;
-        $articulo->color = $request->input('color');
-        $articulo->precio = $request->input('precio');
-        $articulo->talla = $request->input('talla');
-        $articulo->descripcion = $request->input('descripcion');
-        $articulo->save();
-        return redirect('/trabajadores/inventario')->with('success', 'Artículo guardado exitosamente');
+        // Redirigir con mensaje de éxito
+        return redirect()->route('inventario.add', $id)
+            ->with('success', 'Nueva talla y cantidad agregada correctamente.');
     }
+
     public function destroy($id)
     {
-        // Buscar el artículo por ID
-        $articulo = Articulo::find($id);
+        $inventario = Inventario::findOrFail($id);
 
-        // Verificar si el artículo existe
-        if (!$articulo) {
-            return redirect()->back()->with('error', 'Producto no encontrado.');
-        }
+        $inventario->delete();
 
-        // Eliminar imagen asociada si existe
-        $imagenPath = public_path('img/productos/' . $articulo->imagen);
-        if (file_exists($imagenPath)) {
-            unlink($imagenPath);
-        }
-
-        // Eliminar el artículo
-        $articulo->delete();
-
-        return redirect()->back()->with('success', 'Producto eliminado exitosamente.');
+        return redirect()->route('inventario.showDetails', $inventario->producto_id)
+            ->with('success', 'Inventario eliminado correctamente.');
     }
 
     public function update(Request $request, $id)
-    {   
-
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'marca' => 'required|string|max:255',
-            'codigo' => 'required|string|max:100',
-            'imagen' => 'nullable|image|max:2048', 
-            'color' => 'required|string|max:50',
-            'precio' => 'required|numeric|min:0',
-            'talla' => 'required|string|max:10',
-            'descripcion' => 'nullable|string|max:500',
+    {
+        $validated = $request->validate([
+            'talla_eur' => 'required|exists:tallas,id', 
+            'cantidad' => 'required|integer|min:0',
         ]);
 
-        $articulo = Articulo::findOrFail($id);
-        $articulo->nombre = $request->input('nombre');
-        $articulo->marca = $request->input('marca');
-        $articulo->codigo = $request->input('codigo');
-        $articulo->color = $request->input('color');
-        $articulo->precio = $request->input('precio');
-        $articulo->talla = $request->input('talla');
-        $articulo->descripcion = $request->input('descripcion');
+        $inventario = Inventario::findOrFail($id);
 
-        // Actualizar imagen si se sube una nueva
-        if ($request->hasFile('imagen')) {
-            // Eliminar la imagen antigua si existe
-            $imagenPath = public_path('img/productos/' . $articulo->imagen);
-            if (file_exists($imagenPath)) {
-                unlink($imagenPath);
-            }
+        $inventario->cantidad = $validated['cantidad'];
 
-            // Guardar la nueva imagen
-            $imagen = $request->file('imagen');
-            $filename = time() . '.' . $imagen->getClientOriginalExtension();
-            $imagen->move(public_path('img/productos'), $filename);
-            $articulo->imagen = $filename;
+        $inventario->talla_id = $validated['talla_eur'];
+
+        $inventario->save();
+
+        return redirect()->route('inventario.edit', $inventario->producto_id)
+            ->with('success', 'Inventario actualizado correctamente.');
+    }
+
+
+    public function edit($id)
+    {
+        
+        $inventarios = Inventario::with(['producto.marca', 'talla'])->where('producto_id', $id)->get();
+
+        $tallas = Talla::all();
+        
+        if ($inventarios->isEmpty()) {
+            abort(404, 'Inventario no encontrado');
         }
 
-        $articulo->save();
-
-        return redirect('/trabajadores/inventario')->with('success', 'Artículo actualizado exitosamente');
-    }
-    public function showDetails($id)
-    {
-        // Obtener el producto por ID
-        $articulo = Articulo::findOrFail($id); // Usamos findOrFail para manejar el caso de producto no encontrado
-        
-        // Retornar la vista de detalles del producto
-        return view('trabajador/trabajador-inventario-ver', compact('articulo'));
+        return view('trabajador/trabajador-inventario-edit', compact('inventarios', 'tallas'));
     }
 
-    public function ventas(){
-        return view('trabajador/trabajador-ventas');
-    }
     public function pedidos(){
         return view('trabajador/trabajador-pedidos');
     }
 
+    public function login(){
+        if(!auth()->guard('trabajador')->check()){
+            return view('trabajador/login-trabajador');
+        }
+        return redirect()->route('trabajadores.vista');
+    }
+    
+    public function auth(AuthTrabajadorRequest $request){
+        
+        if($request->validated()){
+            if(auth()->guard('trabajador')->attempt([
+                'email' => $request->email,
+                'password' => $request->password,
+            ])){
+                $request->session()->regenerate();
+                session()->flash('success', '¡Inicio de sesión exitoso! Bienvenido.');
+                return redirect()->route('trabajadores.vista');
+            }else{
+                return redirect()->route('login.trabajador')->withErrors(['error' => 'Credenciales incorrectas.'])
+                ->withInput();
+            }
+        }
+    }
+
+    public function logout(){
+        auth()->guard('trabajador')->logout();
+        return redirect()->route('login.trabajador');
+    }
 }

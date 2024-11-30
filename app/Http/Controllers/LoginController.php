@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthUserRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Admin;
@@ -18,12 +19,10 @@ class LoginController extends Controller
     use AuthenticatesUsers;
     
     public function register(){
-        return view('register');
+        return view('users/register');
     }
 
-    public function login() {
-        return view('login');
-    }
+    
 
     public function registerSubmit(){
         $user = User::create([
@@ -37,50 +36,37 @@ class LoginController extends Controller
         ]);
         
         Auth::login($user);
-        return redirect('/admin');
+        return redirect('/login');
     }
 
-    public function loginSubmit(Request $request) {
-        $request->validate([
-            'correo' => 'required|email',
-            'contrasena' => 'required'
-        ]);
-    
-        // Autenticar como User
-        $user = User::where('correo', $request->input('correo'))->first();
-        if ($user && Hash::check($request->input('contrasena'), $user->contrasena)) {
-            Auth::guard('user')->login($user);
-            return redirect()->route('home');
+    public function login() {
+        if(!auth()->guard('admin')->check()){
+            return view('users/login');
         }
+        return redirect()->route('micuenta');
+    }
     
-        // Autenticar como Trabajador
-        $trabajador = Trabajador::where('correo', $request->input('correo'))->first();
-        if ($trabajador && Hash::check($request->input('contrasena'), $trabajador->contrasena)) {
-            Auth::guard('trabajador')->login($trabajador);
-            return redirect()->route('trabajadores.vista');
+    public function auth(AuthUserRequest $request) {
+        if($request->validated()){
+            if(auth()->guard('user')->attempt([
+                'email' => $request->email,
+                'password' => $request->password,
+            ])){
+                $request->session()->regenerate();
+                session()->flash('success', '¡Inicio de sesión exitoso! Bienvenido.');
+                return redirect()->route('micuenta');
+            }else{
+                return redirect()->route('login.user')->withErrors(['error' => 'Credenciales incorrectas.'])
+                ->withInput();
+            }
         }
-    
-        // Autenticar como Admin
-        $admin = Admin::where('correo', $request->input('correo'))->first();
-        if ($admin && Hash::check($request->input('contrasena'), $admin->contrasena)) {
-            Auth::guard('admin')->login($admin);
-            return redirect()->route('admin.vista');
-        }
-    
-        // Si no se encuentra en ninguna tabla
-        return redirect()->route('login')->withErrors([
-            'correo' => 'Las credenciales no coinciden o el usuario no existe.',
-        ]);
     }
     
     
 
-    public function logout(Request $request){
-        Auth::logout();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/');
+    public function logout(){
+        auth()->guard('user')->logout();
+        return redirect()->route('home');
     }
+
 }

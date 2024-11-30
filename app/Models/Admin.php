@@ -2,34 +2,47 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
 {
-    use HasFactory,Notifiable;
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
 
-    protected $table = 'admin'; // Nombre de la tabla
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    
     protected $fillable = [
-        'nombre',
-        'apellido',
-        'correo',
-        'fecha_nacimiento',
-        'DNI',
-        'contrasena',
-        'rol',
+        'nombre', 'apellido', 'email', 'fecha_nacimiento', 'DNI', 'password', 'rol',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
     protected $hidden = [
-        'contrasena', // Ocultar la contraseña al convertir a array o JSON
+        'password',
         'remember_token',
     ];
 
-    public function getAuthPassword() // Añade este método
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
     {
-        return $this->contrasena; // Especifica el campo de la contraseña
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+            'fecha_nacimiento' => 'date',
+        ];
     }
 }

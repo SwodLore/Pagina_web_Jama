@@ -8,6 +8,12 @@
         <button class="add-product-btn"><a href="{{ route('tienda.create') }}">Agregar Tiendas</a></button>
     </div>
     <div class="table-container">
+        @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+                @if(session('error'))
+                    <div class="alert alert-error">{{ session('error') }}</div>
+                @endif
         <table>
             <thead>
                 <tr>

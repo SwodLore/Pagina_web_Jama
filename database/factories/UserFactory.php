@@ -26,10 +26,10 @@ class UserFactory extends Factory
         return [
             'nombre' => $this->faker->firstName(),
             'apellido' => $this->faker->lastName(),
-            'correo' => $this->faker->unique()->safeEmail(),
+            'email' => $this->faker->unique()->safeEmail(),
             'fecha_nacimiento' => $this->faker->date(),
             'DNI' => $this->faker->unique()->numerify('########'),
-            'contrasena' => bcrypt('password'), // contraseña cifrada
+            'password' => bcrypt('password'), // contraseña cifrada
             'rol' => 1, // Rol predeterminado para usuarios normales
             'remember_token' => Str::random(10),
         ];

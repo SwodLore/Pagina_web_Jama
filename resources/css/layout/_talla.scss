@@ -1,0 +1,60 @@
+.talla{
+    margin: 3rem 30rem;
+    
+    h1 {
+        font-size: 36px;
+        text-align: center;
+    }
+    h2 {
+        font-size: 24px;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        font-size: 13px;
+        margin: 3rem 8rem;
+    }
+    .section {
+        margin-bottom: 30px;
+    }
+
+    .highlight {
+        font-weight: bold;
+    }
+
+    .how-to-measure {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .how-to-measure img {
+        max-width: 150px;
+        height: auto;
+    }
+
+    .return-policy {
+        font-size: 16px;
+        margin-top: 20px;
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+    }
+
+    .back-to-top {
+        margin-top: 20px;
+        font-size: 14px;
+        text-decoration: none;
+        color: #0071c2;
+    }
+
+    .back-to-top:hover {
+        text-decoration: underline;
+    }
+    .table{
+        margin-bottom: 2rem;
+    }
+}

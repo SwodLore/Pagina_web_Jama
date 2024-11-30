@@ -16,10 +16,10 @@ class UserSeeder extends Seeder
         $user = new User();
         $user->nombre = 'Alejandro';
         $user->apellido = 'Perez';
-        $user->correo = 'ppovesmartinez@gmail.com';
+        $user->email = 'ppovesmartinez@gmail.com';
         $user->fecha_nacimiento = '1995-01-01';
         $user->DNI = '12345678';
-        $user->contrasena = bcrypt('12345678');
+        $user->password = bcrypt('12345678');
         $user->save();
     }
 }

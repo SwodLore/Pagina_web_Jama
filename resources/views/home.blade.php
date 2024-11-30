@@ -18,16 +18,25 @@
     <div class="articulos">
         <h1>Nuestros Productos</h1>
         <div class="articulos-todos">
-            @foreach ( $articulos as $articulo)
-                <a href="/articulos/{{$articulo->producto_id}}" class="articulo-info">
-                <img src="{{ asset('img/productos/' . $articulo->imagen) }}" alt="foto zapatillas">
-                    <div class="articulos-info-content">
-                        <h2>{{$articulo->marca}}</h2>
-                        <h3>{{$articulo->nombre}} |<span>{{$articulo->codigo}}</span></h3>
-                        <h3>Precio: <span>S/. {{$articulo->precio}}</span></h3>
-                        <h3>Talla: <span>{{$articulo->talla}} EUR</span></h3>
-                        <p>Envio Gratis</p>
-                    </div>
+            @foreach ($articulos as $articulo)
+                <a class="card" href="/articulos/{{$articulo->id}}">
+                    <img src="{{ asset('img/productos/' . ($articulo->imagen ?? 'default.webp')) }}" alt="Zapatillas">
+                    @if ($articulo->marca->descuento > 0)
+                        <div class="discount">-{{ $articulo->marca->descuento }}%</div>
+                    @endif
+                    <div class="new">Nuevo</div>
+                    <h3>{{ $articulo->marca->nombre.' '.$articulo->nombre }}</h3>
+                    <p class="price">
+                        S/ 
+                        @php
+                            $precioOriginal = $articulo->precio;
+                            $precioConDescuento = $precioOriginal + ($precioOriginal * $articulo->marca->descuento / 100);
+                        @endphp
+                        <span>{{ number_format($precioOriginal, 2) }}</span> 
+                        @if ($articulo->marca->descuento > 0)
+                            <del>S/ {{ number_format($precioConDescuento, 2) }}</del>
+                        @endif
+                    </p>
                 </a>
             @endforeach
         </div>
@@ -52,24 +61,14 @@
         <h2>Conoce nuestras</h2>
         <h1>Tiendas Fisicas</h1>
         <div class="tiendas-content">
-            <div class="tiendas-content-ubicacion">
-                <img src="{{ asset('img/tienda1.png') }}" alt="Tienda 1 Jama Sports Huancayo">
-                <h3>Jama Sports Huancayo</h3>
-                <p>Prolongacion Huanuco 275 Huancayo - En la galeria San Francisco de Asis</p>
-                <a href="https://maps.app.goo.gl/KZ1V6tUu6u6MudqZ8" target="_blank">Ver tienda</a>
-            </div>
-            <div class="tiendas-content-ubicacion">
-                <img src="{{ asset('img/tienda2.png') }}" alt="Tienda 1 Jama Sports Huancayo">
-                <h3>Jama Sports Huancayo El tambo</h3>
-                <p>Mariscal Castilla N 1114 - El tambo Huancayo</p>
-                <a href="https://maps.app.goo.gl/NeGGzM3W1aYFfTL3A" target="_blank">Ver tienda</a>
-            </div>
-            <div class="tiendas-content-ubicacion">
-                <img src="{{ asset('img/tienda3.png') }}" alt="Tienda 1 Jama Sports Huancayo">
-                <h3>Jama Sport Chilca</h3>
-                <p>Av 9 de Diciembre N 518 - Chilca Huancayo</p>
-                <a href="https://maps.app.goo.gl/fEgWiEUHxZa2xFGs6" target="_blank">Ver tienda</a>
-            </div>
+            @foreach ( $tiendas as $tienda)
+                <div class="tiendas-content-ubicacion">
+                    <img src="{{ asset('img/tiendas/' . $tienda->imagen) }}" alt="Tienda">
+                    <h3>Jama Sports {{$tienda->distrito}}</h3>
+                    <p>{{$tienda->calle.' N° '.$tienda->numero.' '.$tienda->distrito}}</p>
+                    <a href="{{$tienda->link}}" target="_blank">Ver tienda</a>
+                </div>
+            @endforeach
         </div>
     </div>
     <div class="nosotros-caracteristicas">

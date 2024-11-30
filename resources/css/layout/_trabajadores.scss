@@ -59,6 +59,10 @@
 	span{
 		color: white;
 	}
+    .welcome{
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
   }
   
   .stats-cards {
@@ -189,7 +193,12 @@ button {
 	padding: 1rem 2rem;
     background-color: #e74c3c;
 }
-
+.volver-btn{
+    color: #fff;
+    font-size: 14px;
+    padding: 1rem 2rem;
+    background-color: #3498db;
+}
 .actions {
     form {
         margin: 0;
@@ -292,6 +301,18 @@ button:hover {
     cursor: pointer;
     font-size: 14px;
     margin-left: auto;
+    
+}
+form {
+    .add-product-btn {
+        margin-top: 1rem;
+    }
+    .edit-btn{
+        margin-top: 1rem;
+    }
+    .delete-btn{
+        margin-top: 1rem;
+    }
 }
 
 .add-product-btn:hover {
@@ -401,6 +422,54 @@ button:hover {
         height: 30rem;
         object-fit: cover;
     }
+    select {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+    
+        background-color: #f8f9fa; 
+        border: 1px solid #ced4da; 
+        border-radius: 4px; 
+        padding: 10px 12px; 
+        font-size: 16px;
+        color: #495057; 
+        width: 100%; 
+        box-sizing: border-box; 
+        cursor: pointer; 
+    }
+    
+    
+    select:hover {
+        border-color: #80bdff; 
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); 
+    }
+    
+    /* Focus state */
+    select:focus {
+        outline: none; 
+        border-color: #80bdff; /* Blue border */
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Stronger blue glow */
+    }
+    
+    select::after {
+        content: '▼'; 
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none; 
+        font-size: 14px; 
+    }
+    
+    .select-container {
+        position: relative; 
+        display: inline-block; 
+    }
+    
+    .select-container select {
+        display: block; 
+        width: 100%; 
+    }
 }
 
 .form-modal-anuncio{
@@ -426,14 +495,62 @@ button:hover {
     display: flex;
     gap: 20px;
     justify-content: center;
-    p {
-    background-color: #f9f9f9;
-    padding: 8px 12px;
-    border-radius: 5px;
-    color: #333;
-    font-size: 16px;
-    text-align: left;
-}
+        p {
+        background-color: #f9f9f9;
+        padding: 8px 12px;
+        border-radius: 5px;
+        color: #333;
+        font-size: 16px;
+        text-align: left;
+    }
+    select {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+    
+        background-color: #f8f9fa; 
+        border: 1px solid #ced4da; 
+        border-radius: 4px; 
+        padding: 10px 12px; 
+        font-size: 16px;
+        color: #495057; 
+        width: 100%; 
+        box-sizing: border-box; 
+        cursor: pointer; 
+    }
+    
+    
+    select:hover {
+        border-color: #80bdff; 
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); 
+    }
+    
+    /* Focus state */
+    select:focus {
+        outline: none; 
+        border-color: #80bdff; /* Blue border */
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Stronger blue glow */
+    }
+    
+    select::after {
+        content: '▼'; 
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none; 
+        font-size: 14px; 
+    }
+    
+    .select-container {
+        position: relative; 
+        display: inline-block; 
+    }
+    
+    .select-container select {
+        display: block; 
+        width: 100%; 
+    }
 }
 
 .form-modal-vista div {
@@ -477,4 +594,12 @@ label {
 .actions-vista .edit-btn a {
     color: #fff;
     text-decoration: none;
+}
+
+.update-tallas-form {
+    display: flex;
+    gap: 1rem;
+}
+.update-tallas {
+    display: flex;
 }

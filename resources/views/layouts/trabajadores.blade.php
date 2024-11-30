@@ -10,22 +10,30 @@
 <body class="trabajadores">
     <div class="sidebar">
         <div class="logo">@ Jama Sports</div>
-        <img src="{{ asset('img/Jama.png') }}" alt="Logo de la tienda">
+        <a href="/">
+            <img src="{{ asset('img/Jama.png') }}" alt="Logo Jama Sports">
+        </a>
         <ul class="menu">
             <li><a href="/trabajadores">Inicio</a></li>
-            <li><a href="/trabajadores/inventario">Inventario</a></li>
-            <li><a href="/trabajadores/ventas">Publicar Ventas</a></li>
+            <li><a href="{{ route('productos') }}">Productos</a></li>
+            <li><a href="{{ route('inventario') }}">Inventario</a></li>
             <li><a href="/trabajadores/pedidos">Pedidos</a></li>
+            <li><a href="{{route('marcas')}}">Marcas</a></li>
+            <li><a href="{{route('tallas.view')}}">Tallas</a></li>
+            <li><a href="{{route('descuentos')}}">Cupones</a></li>
             <li><a href="/trabajadores/anuncio">Anuncios</a></li>
             <li><a href="/trabajadores/tienda">Tiendas</a></li>
-            <li><a href="/logout">Cerrar Sesión</a></li>
+            <li><a onclick="document.getElementById('TrabajadorLogoutForm').submit();" href="#">Cerrar Sesión</a>
+                <form id="TrabajadorLogoutForm" action="{{ route('logout.trabajador') }}" method="POST">
+                    @csrf
+                </form></li>
         </ul>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
         <div class="header-admin">
-            <h1>Dashboard Trabajador</h1>
+            <h1><span class="welcome">Bienvenido {{ auth()->guard('trabajador')->user()->nombre.' ' }}</span> Dashboard Trabajador</h1>
             <div class="profile">
                 <span class="notification">🔔 2</span>
                 <span class="profile-name">Renee McKelvey</span>

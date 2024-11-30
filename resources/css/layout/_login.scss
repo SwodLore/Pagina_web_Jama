@@ -12,7 +12,7 @@
     max-width: 100%;
     min-height: 75rem;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 1.5rem;
     h1{
         font-size: 3rem;
         margin: 1rem;
@@ -57,7 +57,8 @@
     max-width: 100%;
     min-height: 65rem;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
     h1{
         font-size: 3rem;
         margin: 1rem;
@@ -129,9 +130,11 @@
     background-color: #ff4b2b;
     color: #fff;
   }
-  #lila {
-    background: #80FFDB;
-    border: 1px solid #80FFDB;
+  .ghost-celeste{
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    background: #5390D9;
+    color: #fff;
   }
   
   button:active {

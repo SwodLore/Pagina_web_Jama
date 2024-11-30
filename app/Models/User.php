@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'nombre', 'apellido', 'correo', 'fecha_nacimiento', 'DNI', 'contrasena', 'rol',
+        'nombre', 'apellido', 'email', 'fecha_nacimiento', 'DNI', 'password', 'rol',
     ];
 
     /**
@@ -42,6 +42,26 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'fecha_nacimiento' => 'date',
         ];
+    }
+    public function direcciones()
+    {
+        return $this->hasMany(direcciones::class);
+    }
+
+    public function metodoPago()
+    {
+        return $this->hasMany(metodoPago::class);
+    }
+    
+    public function carrito()
+    {
+        return $this->hasMany(carrito::class);
+    }
+
+    public function favoritos()
+    {
+        return $this->hasMany(favorito::class);
     }
 }

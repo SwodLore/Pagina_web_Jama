@@ -21,10 +21,10 @@ class TrabajadorFactory extends Factory
         return [
             'nombre' => $this->faker->firstName,
             'apellido' => $this->faker->lastName,
-            'correo' => $this->faker->unique()->safeEmail,
+            'email' => $this->faker->unique()->safeEmail,
             'fecha_nacimiento' => $this->faker->date(),
             'DNI' => $this->faker->unique()->numerify('########'), // Generar un DNI de 8 dígitos
-            'contrasena' => bcrypt('password'), // Cambia esto según tus necesidades
+            'password' => bcrypt('password'), // Cambia esto según tus necesidades
             'salario' => $this->faker->randomFloat(2, 1000, 10000), // Salario aleatorio entre 1000 y 10000
             'departamento' => $this->faker->randomElement($departamentos), 
             'rol' => 2, 

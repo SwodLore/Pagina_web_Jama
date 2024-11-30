@@ -4,7 +4,7 @@
 
 <main>
     <div class="articulos-principal">
-        <div class="articulos-filtro" id="filtersPanel">
+        {{-- <div class="articulos-filtro" id="filtersPanel">
             <h2>Filtrar y Ordenar</h2>
             <h3>Ordenar por:</h3>
             <select name="Odernar por" id="">
@@ -84,23 +84,32 @@
                 <option value="">AMARILLO</option>
                 <option value="">MARROMANO</option>
             </select>
-        </div>
+        </div> --}}
 
         <div class="articulos-list">
             <div class="articulos">
                 <h1 class="articulos-title">Nuestros Productos</h1>
                 <div class="articulos-todos">
-                    @foreach ( $articulos as $articulo)
-                    <a href="/articulos/{{$articulo->producto_id}}" class="articulo-info">
-                        <img src="{{ asset('img/productos/' . $articulo->imagen) }}" alt="foto zapatillas">
-                        <div class="articulos-info-content">
-                            <h2>{{$articulo->marca}}</h2>
-                            <h3>{{$articulo->nombre}} |<span>{{$articulo->codigo}}</span></h3>
-                            <h3>Precio: <span>S/. {{$articulo->precio}}</span></h3>
-                            <h3>Talla: <span>{{$articulo->talla}} EUR</span></h3>
-                            <p>Envio Gratis</p>
-                        </div>
-                    </a>
+                    @foreach ($articulos as $articulo)
+                        <a class="card" href="/articulos/{{$articulo->id}}">
+                            <img src="{{ asset('img/productos/' . ($articulo->imagen ?? 'default.webp')) }}" alt="Zapatillas">
+                            @if ($articulo->marca->descuento > 0)
+                                <div class="discount">-{{ $articulo->marca->descuento }}%</div>
+                            @endif
+                            <div class="new">Nuevo</div>
+                            <h3>{{ $articulo->marca->nombre.' '.$articulo->nombre }}</h3>
+                            <p class="price">
+                                S/ 
+                                @php
+                                    $precioOriginal = $articulo->precio;
+                                    $precioConDescuento = $precioOriginal + ($precioOriginal * $articulo->marca->descuento / 100);
+                                @endphp
+                                <span>{{ number_format($precioOriginal, 2) }}</span> 
+                                @if ($articulo->marca->descuento > 0)
+                                    <del>S/ {{ number_format($precioConDescuento, 2) }}</del>
+                                @endif
+                            </p>
+                        </a>
                     @endforeach
                 </div>
             </div>

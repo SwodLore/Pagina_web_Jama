@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 60);
             $table->string('apellido', 60);
-            $table->string('correo', 60)->unique();
+            $table->string('email')->unique();
             $table->date('fecha_nacimiento');
             $table->string('DNI',8)->unique();
-            $table->string('contrasena', 60);
-            $table->tinyInteger('rol')->default(1);
+            $table->string('password');
+            $table->enum('rol', ['usuario', 'trabajador', 'admin'])->default('usuario');
             $table->rememberToken();
             $table->timestamps(); 
         });

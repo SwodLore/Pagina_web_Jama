@@ -5,15 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <meta name="description" content="Esta pagina web se trata de una tienda online de ventas de zapatillas en huancayo y poder enviar pedidos a otros lugares del peru.">
-    <meta name="keywords" content="zapatillas,venta,huancayo,zapatillas en huancayo, peru, tienda de zapatillas, huancayo">
-    <meta name="author" content="Alessandro Poves">
-    <meta name="robots" content="index, follow">
-    <meta name="title" content="Tienda Online de Zapatillas en Huancayo">
-
-    <meta name="OG:title" content="Tienda Online de Zapatillas en Huancayo">
-    <meta name="OG:description" content="Esta pagina web se trata de una tienda online de ventas de zapatillas en huancayo y poder enviar pedidos a otros lugares del peru.">
-
     <link rel="icon" href="{{ asset('img/Jama-Icon.png') }}" type="image/png">
     
     @vite(['resources/css/app.scss', 'resources/js/app.js'])
@@ -22,7 +13,7 @@
 <body class="login">
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form action="{{ route('login.submit') }}" method="POST">
+            <form action="{{ route('admin.auth') }}" method="POST">
                 @csrf 
                 <h1>Iniciar Sesión</h1>
                 <div class="social-container">
@@ -34,19 +25,34 @@
                     </a>
                 </div>
                 <span>o usa tu email</span>
-                <input type="email" placeholder="Email" name="correo" required>
-                <input type="password" placeholder="Password" name="contrasena" required>
-                <a href="#">Olvidaste tu contraseña?</a>
+                <input type="email" placeholder="Email" name="email" required>
+                <input type="password" placeholder="Password" name="password" required>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <button type="submit" class="ghost-naranja">Iniciar sesión</button>
             </form>
         </div>
         <div class="overlay-container">
                 <div class="overlay-right">
-                    <img src="{{ asset('img/Jama _sin _fondo.png') }}" alt="Logo JamaSports">
+                    <a href="/">
+                        <img src="{{ asset('img/Jama _sin _fondo.png') }}" alt="Logo JamaSports">
+                    </a>
                     <div class="centrar">
                         <h2>Hola!!!</h2>
-                        <p>Crear tu cuenta</p>
-                        <button class="ghost" id="signUp"><a href="/register">Registrar</a></button>
+                        <p>Bienvenido a login de admin</p>
                     </div>
                 </div>
         </div>

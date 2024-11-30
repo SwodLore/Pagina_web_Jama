@@ -3,53 +3,48 @@
 @section('content')
 
 <main>
-    <div class="modal-content">
-        <span id="closeModalButton" class="close"><a href="/trabajadores/inventario">&times;</a></span>
-            <h2>Agregar Nuevo Producto</h2>
-            <form id="productForm" action="{{ route('inventario.store') }}" method="POST" enctype="multipart/form-data">
-                
-                @csrf
-
-                <div class="form-modal">
-                    <div>
-                        <img src="{{ asset('img/productos/adidas-modelo.webp') }}" alt="Producto">
-
-                        <label for="imagen">Imagen:
-                            <input type="file" id="imagen" name="imagen" required>
-                        </label>
-
-                        <label for="descripcion">Descripción:
-                            <textarea id="descripcion" name="descripcion" rows="3" required></textarea>
-                        </label>
-                    </div>
-                    <div>
-                        <label for="nombre">Nombre:
-                            <input type="text" id="nombre" name="nombre" required>
-                        </label>
-            
-                        <label for="marca">Marca:
-                            <input type="text" id="marca" name="marca" required>
-                        </label>
-            
-                        <label for="codigo">Código:
-                            <input type="text" id="codigo" name="codigo" required>
-                        </label>
-    
-                        <label for="precio">Precio:
-                            <input type="number" id="precio" name="precio" step="1" required>
-                        </label>
-            
-                        <label for="color">Color:
-                            <input type="text" id="color" name="color" required>
-                        </label>                    
-            
-                        <label for="talla">Talla:</label>
-                        <input type="number" id="talla" name="talla" step="1" required>
-                    </div>
-                </div>
-                <button type="submit" class="submit-btn">Guardar Producto</button>
-            </form>
-        </div>
+    <div class="table-container">
+        @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+                @if(session('error'))
+                    <div class="alert alert-error">{{ session('error') }}</div>
+                @endif
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto ID</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Código</th>
+                    <th>Imagen</th>
+                    <th>Color</th>
+                    <th>Precio</th>
+                    <th>Genero</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($articulos as $articulo)
+                <tr>
+                    <td>{{ $articulo->id }}</td>
+                    <td>{{ $articulo->nombre }}</td>
+                    <td>{{ $articulo->marca->nombre}}</td>
+                    <td>{{ $articulo->codigo}}</td>
+                    <td><img src="{{ asset('img/productos/' . $articulo->imagen) }}" alt="Producto"></td>
+                    <td>{{$articulo->color}}</td>
+                    <td>S/. {{$articulo->precio}}</td>
+                    <td>{{ $articulo->genero }}</td>
+                    <td class="actions">
+                        <button class="view-btn">
+                            <a href="{{ route('productos.addtallas', ['id' => $articulo->id]) }}" class="view-btn">Agregar Tallas</a>
+                        </button>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </main>
 
 @endsection

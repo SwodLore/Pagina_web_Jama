@@ -9,7 +9,7 @@ class AnuncioController extends Controller
 {
     public function anuncios(){
         $anuncios = Anuncio::paginate(2);
-        return view('/trabajador/trabajador-anuncios', compact('anuncios'));
+        return view('trabajador/trabajador-anuncios', compact('anuncios'));
     }
     public function create(){
         return view('trabajador/trabajador-anuncios-create');
@@ -57,7 +57,7 @@ class AnuncioController extends Controller
         // Eliminar el artículo
         $tienda->delete();
 
-        return redirect()->back()->with('success', 'Producto eliminado exitosamente.');
+        return redirect()->back()->with('error', 'Producto eliminado exitosamente.');
     }
     public function showDetails($id)
     {

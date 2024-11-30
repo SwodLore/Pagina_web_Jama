@@ -37,9 +37,18 @@
                 <nav class="nav-menu">
                     <ul class="nav-menu-list">
                         <li><a class="boton" href="/tienda"><img class="header-icon" src="{{ asset('img/tienda.svg') }}" alt="Tiendas Icon">Tiendas</a></li>
-                        <li><a class="boton" href="/login"><img class="header-icon" src="{{ asset('img/mi_cuenta.svg') }}" alt="Mi cuenta Icon">Mi cuenta</a></li>
-                        <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/favorito.svg') }}" alt="Favorito Icon"></a></li>
-                        <li><a class="boton" href="#"><img class="header-icon" src="{{ asset('img/carrito.svg') }}" alt="Carrito Icon"></a></li>
+                        <li>
+                            @if (auth()->guard('user')->check())
+                                <a class="boton" href="{{ route('micuenta') }}">
+                                <img class="header-icon" src="{{ asset('img/mi_cuenta.svg') }}" alt="Mi cuenta Icon">Mi cuenta
+                                </a>
+                            @else
+                                <a class="boton" href="{{ route('login.user') }}"><img class="header-icon" src="{{ asset('img/mi_cuenta.svg') }}" alt="Mi cuenta Icon">Iniciar Sesion
+                                </a>
+                            @endif 
+                        </li>
+                        <li><a class="boton" href="{{ route('mifavorito')}}"><img class="header-icon" src="{{ asset('img/favorito.svg') }}" alt="Favorito Icon"></a></li>
+                        <li><a class="boton" href="{{ route('micarrito')}}"><img class="header-icon" src="{{ asset('img/carrito.svg') }}" alt="Carrito Icon"></a></li>
                     </ul>
                 </nav>
             </div>
@@ -54,7 +63,7 @@
                 <a class="boton" href="#">Nike</a>
                 <a class="boton" href="#">Puma</a>
                 <a class="boton" href="#">Reebok</a>
-                <a class="boton" href="#">Medidas/Tallas</a>
+                <a class="boton" href="{{ route('tallas') }}">Tallas</a>
             </nav>
         </div>
     </header>

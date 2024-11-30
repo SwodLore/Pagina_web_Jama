@@ -16,7 +16,7 @@ class TiendasTableSeeder extends Seeder
         $tienda = new Tienda();
 
         
-        $tienda->calle = 'Prolongacion Huanuco 275';
+        $tienda->calle = 'Prolongacion Huanuco';
         $tienda->numero = '275';
         $tienda->imagen = 'tienda1.png';
         $tienda->distrito = 'Huancayo';

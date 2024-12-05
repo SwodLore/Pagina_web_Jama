@@ -33,7 +33,7 @@
                     <td>{{$admin->id}}</td>
                     <td>{{$admin->nombre}}</td>
                     <td>{{$admin->apellido}}</td>
-                    <td>{{$admin->correo}}</td>
+                    <td>{{$admin->email}}</td>
                     <td>{{$admin->fecha_nacimiento}}</td>
                     <td>{{$admin->DNI}}</td>
                     <td>{{$admin->created_at}}</td>

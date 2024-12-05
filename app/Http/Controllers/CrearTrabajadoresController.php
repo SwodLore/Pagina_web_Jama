@@ -22,29 +22,39 @@ class CrearTrabajadoresController extends Controller
     }
     
     public function store(Request $request){
-        $trabajadores = new Trabajador;
-
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'correo' => 'required|email|max:255',
+            'email' => 'required|email|max:255',
             'fecha_nacimiento' => 'required|date',
             'DNI' => 'required|string|max:255',
-            'contrasena' => 'required|string|max:255',
+            'password' => 'required|string|max:255',
             'salario' => 'required|numeric|min:1',
             'departamento' => 'required|string|max:255',
+        ], [
+            'email.unique' => 'El correo electrónico ya está registrado.',
+            'email.required' => 'El correo es obligatorio.',
+            'nombre.required' => 'El nombre es obligatorio.',
+            'apellido.required' => 'El apellido es obligatorio.',
+            'password.required' => 'La contraseña es obligatoria.',
         ]);
-
-        $trabajadores->nombre = $request->input('nombre');
-        $trabajadores->apellido = $request->input('apellido');
-        $trabajadores->correo = $request->input('correo');
-        $trabajadores->fecha_nacimiento = $request->input('fecha_nacimiento');
-        $trabajadores->DNI = $request->input('DNI');
-        $trabajadores->contrasena = $request->input('contrasena');
-        $trabajadores->salario = $request->input('salario');
-        $trabajadores->departamento = $request->input('departamento');
-        $trabajadores->save();
-        return redirect('/admin/trabajadores-table')->with('success', 'Trabajador guardado exitosamente');
+    
+        try {
+            $trabajadores = new Trabajador;
+            $trabajadores->nombre = $request->input('nombre');
+            $trabajadores->apellido = $request->input('apellido');
+            $trabajadores->email = $request->input('email');
+            $trabajadores->fecha_nacimiento = $request->input('fecha_nacimiento');
+            $trabajadores->DNI = $request->input('DNI');
+            $trabajadores->password = $request->input('password');
+            $trabajadores->salario = $request->input('salario');
+            $trabajadores->departamento = $request->input('departamento');
+            $trabajadores->save();
+    
+            return redirect('/admin/trabajadores')->with('success', 'Trabajador guardado exitosamente');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Ocurrió un error al guardar el trabajador: ');
+        }
     }
     public function destroy($id)
     {
@@ -67,10 +77,10 @@ class CrearTrabajadoresController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'correo' => 'required|email|max:255',
+            'email' => 'required|email|max:255',
             'fecha_nacimiento' => 'required|date',
             'DNI' => 'required|string|max:255',
-            'contrasena' => 'required|string|max:255',
+            'password' => 'required|string|max:255',
             'salario' => 'required|numeric|min:1',
             'departamento' => 'required|string|max:255',
         ]);
@@ -78,16 +88,16 @@ class CrearTrabajadoresController extends Controller
         $trabajadores= Trabajador::findOrFail($id);
         $trabajadores->nombre = $request->input('nombre');
         $trabajadores->apellido = $request->input('apellido');
-        $trabajadores->correo = $request->input('correo');
+        $trabajadores->email = $request->input('email');
         $trabajadores->fecha_nacimiento = $request->input('fecha_nacimiento');
         $trabajadores->DNI = $request->input('DNI');
-        $trabajadores->contrasena = $request->input('contrasena');
+        $trabajadores->password = $request->input('password');
         $trabajadores->salario = $request->input('salario');
         $trabajadores->departamento = $request->input('departamento');
 
         $trabajadores->save();
 
-        return redirect('/admin/trabajadores-table')->with('success', 'Trabajador actualizado exitosamente');
+        return redirect('/admin/trabajadores')->with('success', 'Trabajador actualizado exitosamente');
     }
     public function showDetails($id)
     {

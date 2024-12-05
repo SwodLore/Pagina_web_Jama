@@ -30,10 +30,10 @@
                     <span>o usa tu email como registro</span>
                     <input type="text" placeholder="Nombre" name="nombre" >
                     <input type="text" placeholder="Apellido" name="apellido" >
-                    <input type="email" placeholder="Email" name="correo" >
+                    <input type="email" placeholder="Email" name="email" >
                     <input type="date" placeholder="Fecha de Nacimiento" name="fecha_nacimiento">
                     <input type="number" placeholder="DNI" name="DNI">
-                    <input type="password" placeholder="Password" name="contrasena" >
+                    <input type="password" placeholder="Password" name="password" >
                     
                     <button type="submit" class="ghost-celeste" >Registrar</button>
             </form>

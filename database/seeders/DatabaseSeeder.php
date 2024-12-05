@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(InventarioSeeder::class);
         $this->call(DescuentosSeeder::class);
 
-        User::factory(10)->create();
+        User::factory(100)->create();
         Admin::factory(5)->create();
         Trabajador::factory(10)->create();
     }

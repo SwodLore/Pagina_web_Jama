@@ -30,7 +30,7 @@ class UserFactory extends Factory
             'fecha_nacimiento' => $this->faker->date(),
             'DNI' => $this->faker->unique()->numerify('########'),
             'password' => bcrypt('password'), // contraseña cifrada
-            'rol' => 1, // Rol predeterminado para usuarios normales
+            'rol' => 'usuario',
             'remember_token' => Str::random(10),
         ];
     }

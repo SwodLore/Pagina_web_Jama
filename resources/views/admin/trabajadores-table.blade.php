@@ -35,7 +35,7 @@
                     <td>{{$trabajador->id}}</td>
                     <td>{{$trabajador->nombre}}</td>
                     <td>{{$trabajador->apellido}}</td>
-                    <td>{{$trabajador->correo}}</td>
+                    <td>{{$trabajador->email}}</td>
                     <td>{{$trabajador->fecha_nacimiento}}</td>
                     <td>{{$trabajador->DNI}}</td>
                     <td>{{$trabajador->salario}}</td>

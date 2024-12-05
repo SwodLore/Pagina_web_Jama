@@ -30,17 +30,17 @@
                 <div>
                     <legend>Credenciales</legend>
                         <label for="correo">Email:
-                            <input type="email" id="correo" name="correo" value="{{ $trabajador->correo }}" required>
+                            <input type="email" id="correo" name="email" value="{{ $trabajador->email }}" required>
                         </label>
             
                         <label for="contrasena">Contraseña:
-                            <input type="text" id="contrasena" name="contrasena" value="{{ $trabajador->contrasena }}" required>
+                            <input type="text" id="contrasena" name="password" value="{{ $trabajador->password }}" required>
                         </label>
                 </div>
                 <div>
                     <legend>Datos</legend>
                     <label for="salario">Salario:
-                        <input type="email" id="salario" name="salario" value="{{ $trabajador->salario }}" required>
+                        <input type="number" id="salario" name="salario" value="{{ $trabajador->salario }}" required>
                     </label>
         
                     <label for="departamento">Departamento:

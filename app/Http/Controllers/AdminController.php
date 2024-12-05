@@ -28,25 +28,35 @@ class AdminController extends Controller
     }
     
     public function store(Request $request){
-        $admin = new Admin;
-
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'correo' => 'required|email|max:255',
+            'email' => 'required|email|max:255|unique:admins,email',
             'fecha_nacimiento' => 'required|date',
             'DNI' => 'required|string|max:255',
-            'contrasena' => 'required|string|max:255',
+            'password' => 'required|string|max:255',
+        ], [
+            'email.unique' => 'El correo electrónico ya está registrado.',
+            'email.required' => 'El correo es obligatorio.',
+            'nombre.required' => 'El nombre es obligatorio.',
+            'apellido.required' => 'El apellido es obligatorio.',
+            'password.required' => 'La contraseña es obligatoria.',
         ]);
-
-        $admin->nombre = $request->input('nombre');
-        $admin->apellido = $request->input('apellido');
-        $admin->correo = $request->input('correo');
-        $admin->fecha_nacimiento = $request->input('fecha_nacimiento');
-        $admin->DNI = $request->input('DNI');
-        $admin->contrasena = $request->input('contrasena');
-        $admin->save();
-        return redirect('/admin/admin-table')->with('success', 'Admin guardado exitosamente');
+    
+        try {
+            $admin = new Admin;
+            $admin->nombre = $request->input('nombre');
+            $admin->apellido = $request->input('apellido');
+            $admin->email = $request->input('email');
+            $admin->fecha_nacimiento = $request->input('fecha_nacimiento');
+            $admin->DNI = $request->input('DNI');
+            $admin->password = bcrypt($request->input('password')); 
+            $admin->save();
+    
+            return redirect('/admin/admin')->with('success', 'Admin guardado exitosamente');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Ocurrió un error al guardar el admin: ');
+        }
     }
     public function destroy($id)
     {
@@ -69,23 +79,23 @@ class AdminController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'correo' => 'required|email|max:255',
+            'email' => 'required|email|max:255',
             'fecha_nacimiento' => 'required|date',
             'DNI' => 'required|string|max:255',
-            'contrasena' => 'required|string|max:255',
+            'password' => 'required|string|max:255',
         ]);
 
         $admin= Admin::findOrFail($id);
         $admin->nombre = $request->input('nombre');
         $admin->apellido = $request->input('apellido');
-        $admin->correo = $request->input('correo');
+        $admin->email = $request->input('email');
         $admin->fecha_nacimiento = $request->input('fecha_nacimiento');
         $admin->DNI = $request->input('DNI');
-        $admin->contrasena = $request->input('contrasena');
+        $admin->password = $request->input('password');
 
         $admin->save();
 
-        return redirect('/admin/admin-table')->with('success', 'Admin actualizado exitosamente');
+        return redirect('/admin/admin')->with('success', 'Admin actualizado exitosamente');
     }
     public function showDetails($id)
     {

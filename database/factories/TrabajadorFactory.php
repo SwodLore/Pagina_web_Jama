@@ -27,7 +27,7 @@ class TrabajadorFactory extends Factory
             'password' => bcrypt('password'), // Cambia esto según tus necesidades
             'salario' => $this->faker->randomFloat(2, 1000, 10000), // Salario aleatorio entre 1000 y 10000
             'departamento' => $this->faker->randomElement($departamentos), 
-            'rol' => 2, 
+            'rol' => 'trabajador', 
         ];
     }
 }

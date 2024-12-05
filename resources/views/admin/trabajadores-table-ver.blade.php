@@ -22,10 +22,10 @@
                 <div>
                     <legend>Credenciales</legend>
                         <label for="correo">Email:</label>
-                        <p>{{ $trabajador->correo }}</p>
+                        <p>{{ $trabajador->email }}</p>
             
                         <label for="contrasena">Contraseña Hasheada:</label>
-                        <p>{{ $trabajador->contrasena }}</p>
+                        <p>{{ $trabajador->password }}</p>
                 </div>
                 <div>
                     <legend>Datos</legend>

@@ -28,11 +28,10 @@ class LoginController extends Controller
         $user = User::create([
             'nombre' => request('nombre'),
             'apellido' => request('apellido'),
-            'correo' => request('correo'),
-            'contrasena' => Hash::make(request('contrasena')),
+            'email' => request('email'),
+            'password' => Hash::make(request('password')),
             'fecha_nacimiento' => request('fecha_nacimiento'),
             'DNI' => request('DNI'),
-            'rol' => 'user'
         ]);
         
         Auth::login($user);

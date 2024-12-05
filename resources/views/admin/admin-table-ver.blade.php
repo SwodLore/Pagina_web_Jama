@@ -22,10 +22,10 @@
                 <div>
                     <legend>Credenciales</legend>
                         <label for="correo">Email:</label>
-                        <p>{{ $admin->correo }}</p>
+                        <p>{{ $admin->email }}</p>
             
                         <label for="contrasena">Contraseña Hasheada:</label>
-                        <p>{{ $admin->contrasena }}</p>
+                        <p>{{ $admin->password }}</p>
                 </div>
             </div>
             <div class="actions-vista">

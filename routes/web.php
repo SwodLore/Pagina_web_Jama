@@ -16,9 +16,7 @@ use App\Http\Controllers\TallaController;
 use App\Http\Controllers\TiendasController;
 use App\Http\Controllers\TrabajadorController;
 use App\Http\Controllers\UsuarioController;
-use App\Models\Descuento;
-use App\Models\Marca;
-use App\Models\Trabajador;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tienda', [HomeController::class, 'tienda']);

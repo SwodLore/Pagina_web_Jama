@@ -6,6 +6,13 @@
     <div class="modal-content">
         <span id="closeModalButton" class="close"><a href="/admin/admin">&times;</a></span>
             <h2>Agregar Nuevo Producto</h2>
+            @if(session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+            @if(session('error'))
+                <div class="alert alert-error">{{ session('error') }}</div>
+            @endif
+
             <form id="productForm" action="{{ route('admin.admin.store') }}" method="POST" enctype="multipart/form-data">
                 
                 @csrf
@@ -29,11 +36,11 @@
                     <div>
                         <legend>Credenciales</legend>
                         <label for="correo">Email:
-                            <input type="email" id="correo" name="correo" required>
+                            <input type="email" id="correo" name="email" required>
                         </label>
             
                         <label for="contrasena">Contraseña:
-                            <input type="text" id="contrasena" name="contrasena" required>
+                            <input type="text" id="contrasena" name="password" required>
                         </label>
                     </div>
                 </div>
